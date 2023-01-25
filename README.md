@@ -21,7 +21,7 @@ Le joueur doit ensuite relier un maximum de cases de mêmes valeurs (*blocs*) ou
 Il peut ensuite prendre des points supplémentaires (bloc le plus grand, chaîne la plus longue...) ou en perdre (cases isolées...).  
 Le joueur ayant fait le plus de points gagne la partie.  
 
-![Trek 12](../Projets/images/trek-12-jeu.jpg)
+![Trek 12](images/trek12-lelabodesjeux-rollandwrite-lumberjackstudios-3.jpg)
 
 Le jeu est intéressant pour de jeunes joueurs car il nécessite du calcul mental, de la logique, de l'anticipation, et présente les statistiques. Pour ces raisons, je souhaite que les calculs ne soient pas faits automatiquement mais seulement vérifiés, pour que les enfants continuent à faire leurs calculs eux-mêmes.  
 
