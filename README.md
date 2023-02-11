@@ -1,3 +1,5 @@
+![Trek12_Present](images/Trek12_present.jpg)
+
 # Trek12
 
 Le but de cette SAE sera de développer un jeu (Trek12) multi-joueurs non temps-réel en réseau (à travers code first) pour mobile et/ou web.
