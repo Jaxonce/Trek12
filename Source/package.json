@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "expo-screen-orientation": "^5.0.1",
     "react-native": "^0.71.2"
   }
 }
