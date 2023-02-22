@@ -1,14 +1,20 @@
 import * as React from "react";
 import { View, Text, StyleSheet, Button, Pressable } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 
 //buttonNav props
 type ButtonNavProps = {
     text: string;
+    onPress : any;
 }
+
+const navigation = useNavigation();
 
 export default function ButtonNav(props: ButtonNavProps){
   return (
-        <Pressable onPressIn={onPress} style={({ pressed }) => [
+
+        <Pressable onPress={onPress} style={({ pressed }) => [
             {
               opacity: pressed
                 ? 0.8
@@ -23,7 +29,7 @@ export default function ButtonNav(props: ButtonNavProps){
 };
 
 function onPress() {
-    console.log("Pressed!");
+  
 }
 
 const styles = StyleSheet.create({
