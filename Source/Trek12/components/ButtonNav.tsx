@@ -9,12 +9,10 @@ type ButtonNavProps = {
     onPress : any;
 }
 
-const navigation = useNavigation();
-
 export default function ButtonNav(props: ButtonNavProps){
   return (
 
-        <Pressable onPress={onPress} style={({ pressed }) => [
+        <Pressable onPress={props.onPress} style={({ pressed }) => [
             {
               opacity: pressed
                 ? 0.8

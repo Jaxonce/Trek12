@@ -9,14 +9,16 @@ import JoinGameScreen from './JoinGameScreen';
 
 
 
-export default function HomeScreen(navigation: any) {
+export default function HomeScreen({navigation}) {
     const nav = {navigation};
+    const goToNewPlay = () => {navigation.navigate("Home")}
+    const goToOther = () => {navigation.navigate("Home2")}
     return (
         <ImageBackground source={require('../assets/bg.png')} resizeMode="cover" style={styles.image}>
             <View style={styles.container}>
-                <ButtonNav onPress={nav}  text='Creer une partie'></ButtonNav>
+                <ButtonNav onPress={()=>goToNewPlay()}  text='Creer une partie'/>
                 
-                <ButtonNav onPress={nav} text='Rejoindre une partie'></ButtonNav>
+                <ButtonNav onPress={()=>goToOther()} text='Rejoindre une partie'/>
             </View>
             <InputBox text=""></InputBox>
         </ImageBackground>
