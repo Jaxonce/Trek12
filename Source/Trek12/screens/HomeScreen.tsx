@@ -10,9 +10,8 @@ import JoinGameScreen from './JoinGameScreen';
 
 
 export default function HomeScreen({navigation}) {
-    const nav = {navigation};
-    const goToNewPlay = () => {navigation.navigate("Home")}
-    const goToOther = () => {navigation.navigate("Home2")}
+    const goToNewPlay = () => {navigation.navigate("CreateGameScreen")}
+    const goToOther = () => {navigation.navigate("JoinGameScreen")}
     return (
         <ImageBackground source={require('../assets/bg.png')} resizeMode="cover" style={styles.image}>
             <View style={styles.container}>

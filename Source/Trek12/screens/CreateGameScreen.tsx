@@ -1,13 +1,11 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, ImageBackground } from 'react-native';
-import CodeBoxInput from '../components/CodeBoxInput';
-import ButtonOk from '../components/ButtonOK';
+import CodeBox from '../components/CodeBox';
 
-export default function JoinGameScreen() {
+export default function CreateGameScreen() {
     return (
         <ImageBackground source={require('../assets/bg.png')} resizeMode="cover" style={styles.image}>
-            <CodeBoxInput text="Rentrer le code"/>
-            <ButtonOk/>
+            <CodeBox text="Votre code est"></CodeBox>
         </ImageBackground>
         
     );

@@ -3,6 +3,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from '../screens/HomeScreen';
 import JoinGameScreen from '../screens/JoinGameScreen';
+import CreateGameScreen from '../screens/CreateGameScreen';
 
 export default function StartNavigation() {
     const Stack = createStackNavigator();
@@ -15,8 +16,13 @@ export default function StartNavigation() {
             options={{ headerShown: false }}
           />
           <Stack.Screen 
-            name="Home2" 
-            component={JoinGameScreen} 
+            name="CreateGameScreen" 
+            component={CreateGameScreen} 
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="JoinGameScreen"
+            component={JoinGameScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

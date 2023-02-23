@@ -1,19 +1,19 @@
 import * as React from "react";
 import { View, Text, StyleSheet, TextInput } from "react-native";
 
-type InputBoxProps = {
+type CodeBoxProps = {
     text: string;
     style?: any;
     width?: number;
     height?: number;
 }
 
-export default function InputBox(props: InputBoxProps){
+export default function CodeBox(props: CodeBoxProps){
   return (
     <View style={styles.vueInput}>
-        <Text style={styles.textLabel}>Nom d'utilisateur</Text>
+        <Text style={styles.textLabel}>{props.text}</Text>
         <View style={styles.inputBox}>
-            <TextInput style={styles.text} placeholder={props.text} />
+            <Text style={styles.text}>6GV25S</Text>
         </View>
     </View>
         
@@ -22,8 +22,8 @@ export default function InputBox(props: InputBoxProps){
 
 const styles = StyleSheet.create({
     inputBox: {
-        width: 161,
-        height: 61,
+        width: 265,
+        height: 114,
         backgroundColor: "rgba(217, 217, 217, 0.53)",
         borderRadius: 22,
         boxShadow: '0 12px 6px 0 rgba(0, 0, 0, 0.41)',
@@ -31,41 +31,29 @@ const styles = StyleSheet.create({
         borderWidth: 10,
         borderColor: '#583929',
         borderStyle: 'solid',
+        margin: 10,
         flex: 0,
         alignItems: 'center',
         justifyContent: 'center',
-        
-        
-        position: 'absolute',
-        top: -60,
-        left: 0,
-        right: 0,
-        bottom: 20,
-        margin: 10,
     },
     text: {
         color: 'black',
-        fontSize: 15,
+        fontSize: 40,
         fontWeight: 'bold',
         textAlign: 'center',
         fontFamily: 'Sketch',
     },
     vueInput: {
-        flex: 0,
-        flexDirection: 'column',
-        alignItems: 'flex-start',
-        justifyContent: 'space-around',
-        margin: 10,
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
     },
     textLabel: {
         color: 'black',
-        fontSize: 15,
+        fontSize: 30,
         fontWeight: 'bold',
         textAlign: 'center',
         fontFamily: 'Sketch',
         marginLeft: 15,
-        position: 'relative',
-        
-        bottom: 75,
     },
 });
