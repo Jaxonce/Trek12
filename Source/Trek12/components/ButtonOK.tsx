@@ -1,39 +1,50 @@
 import * as React from "react";
-import { Text, View, StyleSheet, ImageBackground } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { Text, View, StyleSheet, ImageBackground, Pressable } from "react-native";
 
 
 export default function ButtonOK () {
   return (
-    <TouchableOpacity style={styles.button}>
-      <Text style={styles.ok}>OK</Text>
-    </TouchableOpacity>
+    <View>
+        <Pressable style={({ pressed }) => [
+            {
+              opacity: pressed
+                ? 0.8
+                : 1,
+              
+            },
+            styles.button,
+          ]}>
+            <ImageBackground source={require('../assets/bg_wood.jpg')} imageStyle={{ borderRadius: 22}} resizeMode="cover" style={styles.background}>
+               <Text style={styles.ok}>OK</Text>
+            </ImageBackground>
+        </Pressable>
+    </View>
+    
+    
   );
 };
 
 const styles = StyleSheet.create({
     button: {
-        width: 55,
-        height: 32,
-        padding: 10,
-        backgroundColor: "rgba(217, 217, 217, 0.53)",
-        borderRadius: 22,
-        boxShadow: '0 12px 6px 0 rgba(0, 0, 0, 0.41)',
-        backdropFilter: 'blur(4px)',
-        borderWidth: 10,
-        borderColor: '#583929',
-        borderStyle: 'solid',
-        flex: 0,
+        width: 130,
+        height: 95,
+        borderRadius: 32,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
     },
     ok: {
-        color: 'black',
+        color: 'white',
         fontSize: 30,
         fontWeight: 'bold',
         textAlign: 'center',
         fontFamily: 'Sketch',
+    },
+    background: {
+        flex: 1,
+        justifyContent: "center",
+        alignItems: 'center',
+        borderRadius: 22
     }
 });
 
