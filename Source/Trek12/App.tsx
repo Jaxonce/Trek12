@@ -3,6 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import HomeScreen from './screens/HomeScreen';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import { useFonts } from 'expo-font';
+import StartNavigation from './components/StartNavigation';
 
 
 
@@ -16,6 +17,6 @@ export default function App() {
     return null;
   }
   return (
-    <HomeScreen></HomeScreen>
+    <StartNavigation></StartNavigation>
   );
 }

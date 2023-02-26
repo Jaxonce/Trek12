@@ -1,17 +1,16 @@
 import * as React from "react";
-import { View, Text, StyleSheet, Button, Pressable } from "react-native";
+import { View, Text, StyleSheet, Button, Pressable, Image, ImageBackground } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 
 
 //buttonNav props
-type ButtonNavProps = {
-    text: string;
+type ButtonBackProps = {
     onPress : any;
 }
 
-export default function ButtonNav(props: ButtonNavProps){
+export default function ButtonBack(props: ButtonBackProps){
   return (
-
+    <ImageBackground source={require("../assets/bg_wood.jpg")} imageStyle={{borderRadius:22}} style={styles.background}>
         <Pressable onPress={props.onPress} style={({ pressed }) => [
             {
               opacity: pressed
@@ -21,8 +20,11 @@ export default function ButtonNav(props: ButtonNavProps){
             },
             styles.bigButton,
           ]}>
-            <Text style={styles.text}>{props.text}</Text>
+            
+            <Image source={require("../assets/arrowshape.backward.png")}></Image>
+            
           </Pressable>
+        </ImageBackground>
     );
 };
 
@@ -32,19 +34,16 @@ function onPress() {
 
 const styles = StyleSheet.create({
     bigButton: {
-        width: 265,
-        height: 114,
-        backgroundColor: "rgba(217, 217, 217, 0.53)",
+        alignSelf:"flex-start",
+        backgroundColor: "transparent",
         borderRadius: 22,
-        boxShadow: '0 12px 6px 0 rgba(0, 0, 0, 0.41)',
-        backdropFilter: 'blur(4px)',
-        borderWidth: 10,
-        borderColor: '#583929',
-        borderStyle: 'solid',
+        boxShadow: '0 12px 6px 0 rgba(255, 255, 255, 1)',
+        padding: 10,
         flex: 0,
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
+        
     },
     text: {
         color: 'black', 
@@ -52,6 +51,11 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         textAlign: 'center',
         fontFamily: 'Sketch',
+    },
+    background: {
+        position : 'absolute',
+        left: 30,
+        top:20,
     }
 });
 
