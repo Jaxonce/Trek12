@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, ImageBackground } from 'react-native';
 import ButtonNav from '../components/ButtonNav';
+import {OperationGrid} from '../components/OperationGrid';
 
 export default function HomeScreen() {
     return (
@@ -9,6 +10,7 @@ export default function HomeScreen() {
                 <ButtonNav text='Creer une partie'></ButtonNav>
                 <ButtonNav text='Rejoindre une partie'></ButtonNav>
             </View>
+            <OperationGrid></OperationGrid>
         </ImageBackground>
         
     );
