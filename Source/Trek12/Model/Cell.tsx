@@ -2,14 +2,11 @@ import Celltype from './Celltype';
 
 class Cell{
 
-    private x: number
-    private y: number
+    private id: number
     private value: number
     private type: Celltype
 
-    constructor( x: number, y: number , value: number, type: Celltype = Celltype.UNKNOWN){
-        this.x = x
-        this.y = y
+    constructor(value: number, type: Celltype = Celltype.UNKNOWN){
         this.value = value
         this.type = type
     }
