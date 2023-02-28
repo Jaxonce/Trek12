@@ -112,7 +112,6 @@ class Game {
 class GameMode {
     <<abstract>>
     +initialize(): void
-
 }
 class ClassicGameMode {
     +initialize(): void
