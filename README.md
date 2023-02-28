@@ -52,102 +52,86 @@ Les technologies seront choisies en accord avec le tuteur.
 ## Diagramme de classes
 
 ```mermaid
-@startuml
 classDiagram
-    class Player {
-        -Id: int
-        -Name: String
-    }
+class Player {
+    -Id: int
+    -Name: String
+}
+class GamePlayer {
+    -Score: int
+    -Penalties: int
+    +placeValue(cell: Cell, value: int): boolean
 
-    class GamePlayer {
-        -Score: int
-        -Penalties: int
-        +placeValue(cell: Cell, value: int): boolean
+}
+class Grid {
+    -Size: int
+    +addCell(cell: Cell): boolean
+    +removeCell(cell: Cell): boolean
+}
+class Cell {
+    -X: int
+    -Y: int
+    -Value: int
+}
+class CellType{
+    <<enumeration>>
+    UNKNOWN
+    CHAIN
+    ZONE
+    BOTH
+}
+class Operation{
+    <<enumeration>>
+    PLUS
+    MINUS
+    MAXVALUE
+    MINVALUE
+    MULTIPLY
+}
+class OperationManager {
+    <<abstract>>
+    -OperationDict: map<<Operation, int>>
+    -CalculDict: map<<Operation, func>>
+}
+class Classic{
 
-    }
+}
+class Stats {
+    -Chains: int
+    -Zones: int
+    -MaxChainValue: int
+    -MaxZoneValue: int
+    -NbPlayed
+}
+class Game {
+    -Players: map<<Player, GamePlayer>>
+    -Winner: Player
+    -DiceValue1: int 
+    -DiceValue2: int
+    +rollDice(): int
+    +nextTurn(int, int): void
+}
+class GameMode {
+    <<abstract>>
+    +initialize(): void
 
-    class Grid {
-        -Size: int
-        +addCell(cell: Cell): boolean
-        +removeCell(cell: Cell): boolean
-    }
-
-    class Cell {
-        -X: int
-        -Y: int
-        -Value: int
-    }
-
-    class CellType{
-        <<enumeration>>
-        UNKNOWN
-        CHAIN
-        ZONE
-        BOTH
-    }
-
-    class Operation{
-        <<enumeration>>
-        PLUS
-        MINUS
-        MAXVALUE
-        MINVALUE
-        MULTIPLY
-    }
-    
-
-    class OperationManager {
-        <<abstract>>
-        -OperationDict: map<<Operation, int>>
-        -CalculDict: map<<Operation, func>>
-    }
-
-    class Classic{
-
-    }
-
-    class Stats {
-        -Chains: int
-        -Zones: int
-        -MaxChainValue: int
-        -MaxZoneValue: int
-        -NbPlayed
-    }
-
-    class Game {
-        -Players: map<<Player, GamePlayer>>
-        -Winner: Player
-        -DiceValue1: int 
-        -DiceValue2: int
-        +rollDice(): int
-        +nextTurn(int, int): void
-    }
-    
-    class GameMode {
-        <<abstract>>
-        +initialize(): void
-
-    }
-
-    class ClassicGameMode {
-        +initialize(): void
-    }
-
-    GamePlayer --> Grid : +Grid
-    Grid --> Cell: +Cells[]
-    Cell --> CellType: +type
-    Player --> Stats: +Statistiques
-    note for Game "Le dictionnaire 'Players' est un dictionnaire\n qui utilise des paires Player/GamePlayer\n pour pouvoir bien les associer"
-    Game --> Player: +Players
-    Game --> GamePlayer: +Players
-    note for OperationManager "Le 1er dictionnaire sert à stocker le nombre\n d'opérations restantes alors que le second sert\n à stocker la manière de calculer chaque \n opération, à l'aide de fonctions anonymes\n (fonctions prenant deux Int en entrée et\n rendant un int). On pourrait alors ajouter \n plusieurs moyens de calculer les opérations\n en faisant implémentant l'interface de\n différentes manières"
-    GamePlayer --> OperationManager
-    Classic --|> OperationManager
-    Game -- GameMode
-    note for OperationManager "-OperationDict: map(Operation, int) \n -CalculDict: map(Operation, func)"
-    ClassicGameMode --|> GameMode
-    OperationManager --> Operation
-@enduml
+}
+class ClassicGameMode {
+    +initialize(): void
+}
+GamePlayer --> Grid : +Grid
+Grid --> Cell: +Cells[]
+Cell --> CellType: +type
+Player --> Stats: +Statistiques
+note for Game "Le dictionnaire 'Players' est un dictionnaire\n qui utilise des paires Player/GamePlayer\n pour pouvoir bien les associer"
+Game --> Player: +Players
+Game --> GamePlayer: +Players
+note for OperationManager "Le 1er dictionnaire sert à stocker le nombre\n d'opérations restantes alors que le second sert\n à stocker la manière de calculer chaque \n opération, à l'aide de fonctions anonymes\n (fonctions prenant deux Int en entrée et\n rendant un int). On pourrait alors ajouter \n plusieurs moyens de calculer les opérations\n en faisant implémentant l'interface de\n différentes manières"
+GamePlayer --> OperationManager
+Classic --|> OperationManager
+Game -- GameMode
+note for OperationManager "-OperationDict: map(Operation, int) \n -CalculDict: map(Operation, func)"
+ClassicGameMode --|> GameMode
+OperationManager --> Operation
 ```
 
-[![](https://mermaid.ink/img/pako:eNqNVs1u4zYQfhVCFzuw3WJ7FIwAWe-ia9Q_AZxkd1P3QEvjhF2K1JJUEDfNu_TYPIdfbGcoWT-M3VQHUZz5OP8z1FOU6BSiOEokt_aD4HeGZ2vF8PEUdin5Dgx7Kmn0jKZpzIRyLcqCZxCzlTNC3ZXk57VqS_kVAUckrRJtIBR2CYpLJ8AGjEEueQI3XBbQT0DKmE3wPWQPRPHYs5httJbA1UF7aIYRadcA8Veof8DTlAS3dLTl1jADmX6AN5CBfoJ09H8Jnf8aEm5q705KvNrl0BI6HoMqMjDcCa3OzxvG9eK3xfLzoiFMPl1MW9vb5eJjs3u_vPp0VOUyr2T_H52Xs-tVs5tPF53txZebi9n1xw4gpFzPrqaXs6-1KbScMGjOFb_rlth4zDfWGZ64tlWj-sgHkbiYZTwfj2vakKLdgU-4TAp5HLstVHIAh8mht0ieTlTjynFnO-UwuedChXU_utXqVTOM5vzRo8P6ODDp0FHeYuMbMT3Zpx2Lyqa1ldvlbthq506YPgulwMTVzGgxMHKlMe-8NewY65ewD42WFHLon4UcBY_uqjCqj-Rh1fgPWqRBjXTdmuOce7syBkIJJ7jEudCvpf5Xco-JPiqkI6I1D0ej83IuxWxAawUgCrEmfrYMaLG__1Ey_Rg5MKn7EeBwKbktub7CkEmrsE58L8CWIKUdsK02ZcbX0QxYiuWNFa24MMB6VeJ7DKxjhepw1yjjeyFY4YQUFk-CZTkxDtfFz41_hM11YeiFgTBsI0AxiVAMn04EIqImJt7q8iCaXdkQsBvZIaR26tVE8A6-w4-OkxaMY_t_mHU6-YZMCSgi25QOpj2d719KMZahb44rR2ZLbSy6DwS3kGiVekF0pi2LY8sosf_XUHxY4icI0pN7TmcJ3cgf0knZ4yL14K1WSamWK612GSYN4f2GnBu8I7GPUige2RQ_MKSgnNm_AANvCQJSQmDmqD9-YssyDYYLV7nA_9SFo9hQhmRhBRRIzfQOUEPbZEpWKxaER31bLixpEFku9y8Zqqed7KE6MFu8qVGGj6PYbvEs-OAdQmLbSW8VbJi4qt7LVkPE36cgVXXUnf52QRy5A_rdK-DMhyYc_v1g9p8dXAkHgre2a88rMzo-03CIhhFeoxlWAv6T-ZGyjtw9ZLCOYvxMuflG-p4RxwunVzuVRPGWSwvDqMhT7qD6h6upkAqnzbz6y6NlGOVc3Wp9wDz_AAdcMTA?type=png)](https://mermaid.live/edit#pako:eNqNVs1u4zYQfhVCFzuw3WJ7FIwAWe-ia9Q_AZxkd1P3QEvjhF2K1JJUEDfNu_TYPIdfbGcoWT-M3VQHUZz5OP8z1FOU6BSiOEokt_aD4HeGZ2vF8PEUdin5Dgx7Kmn0jKZpzIRyLcqCZxCzlTNC3ZXk57VqS_kVAUckrRJtIBR2CYpLJ8AGjEEueQI3XBbQT0DKmE3wPWQPRPHYs5httJbA1UF7aIYRadcA8Veof8DTlAS3dLTl1jADmX6AN5CBfoJ09H8Jnf8aEm5q705KvNrl0BI6HoMqMjDcCa3OzxvG9eK3xfLzoiFMPl1MW9vb5eJjs3u_vPp0VOUyr2T_H52Xs-tVs5tPF53txZebi9n1xw4gpFzPrqaXs6-1KbScMGjOFb_rlth4zDfWGZ64tlWj-sgHkbiYZTwfj2vakKLdgU-4TAp5HLstVHIAh8mht0ieTlTjynFnO-UwuedChXU_utXqVTOM5vzRo8P6ODDp0FHeYuMbMT3Zpx2Lyqa1ldvlbthq506YPgulwMTVzGgxMHKlMe-8NewY65ewD42WFHLon4UcBY_uqjCqj-Rh1fgPWqRBjXTdmuOce7syBkIJJ7jEudCvpf5Xco-JPiqkI6I1D0ej83IuxWxAawUgCrEmfrYMaLG__1Ey_Rg5MKn7EeBwKbktub7CkEmrsE58L8CWIKUdsK02ZcbX0QxYiuWNFa24MMB6VeJ7DKxjhepw1yjjeyFY4YQUFk-CZTkxDtfFz41_hM11YeiFgTBsI0AxiVAMn04EIqImJt7q8iCaXdkQsBvZIaR26tVE8A6-w4-OkxaMY_t_mHU6-YZMCSgi25QOpj2d719KMZahb44rR2ZLbSy6DwS3kGiVekF0pi2LY8sosf_XUHxY4icI0pN7TmcJ3cgf0knZ4yL14K1WSamWK612GSYN4f2GnBu8I7GPUige2RQ_MKSgnNm_AANvCQJSQmDmqD9-YssyDYYLV7nA_9SFo9hQhmRhBRRIzfQOUEPbZEpWKxaER31bLixpEFku9y8Zqqed7KE6MFu8qVGGj6PYbvEs-OAdQmLbSW8VbJi4qt7LVkPE36cgVXXUnf52QRy5A_rdK-DMhyYc_v1g9p8dXAkHgre2a88rMzo-03CIhhFeoxlWAv6T-ZGyjtw9ZLCOYvxMuflG-p4RxwunVzuVRPGWSwvDqMhT7qD6h6upkAqnzbz6y6NlGOVc3Wp9wDz_AAdcMTA)
