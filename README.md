@@ -93,9 +93,7 @@ class OperationManager {
     -OperationDict: map<<Operation, int>>
     -CalculDict: map<<Operation, func>>
 }
-class Classic{
-
-}
+class Classic
 class Stats {
     -Chains: int
     -Zones: int
