@@ -51,8 +51,8 @@ Les technologies seront choisies en accord avec le tuteur.
 
 ## Diagramme de classes
 
-```mermaid
-classDiagram
+```plantuml
+@startuml classDiagram
 class Player {
     -Id: int
     -Name: String
@@ -73,26 +73,26 @@ class Cell {
     -Y: int
     -Value: int
 }
-class CellType{
-    <<enumeration>>
+
+enum CellType{
     UNKNOWN
     CHAIN
     ZONE
     BOTH
 }
-class Operation{
-    <<enumeration>>
+enum Operation{
     PLUS
     MINUS
     MAXVALUE
     MINVALUE
     MULTIPLY
 }
-class OperationManager {
+abstract class OperationManager {
     <<abstract>>
     -OperationDict: map<<Operation, int>>
     -CalculDict: map<<Operation, func>>
 }
+
 class Classic
 class Stats {
     -Chains: int
@@ -109,10 +109,10 @@ class Game {
     +rollDice(): int
     +nextTurn(int, int): void
 }
-class GameMode {
-    <<abstract>>
+abstract class GameMode {
     +initialize(): void
 }
+
 class ClassicGameMode {
     +initialize(): void
 }
@@ -120,15 +120,19 @@ GamePlayer --> Grid : +Grid
 Grid --> Cell: +Cells[]
 Cell --> CellType: +type
 Player --> Stats: +Statistiques
-note for Game "Le dictionnaire 'Players' est un dictionnaire\n qui utilise des paires Player/GamePlayer\n pour pouvoir bien les associer"
+note "Le dictionnaire 'Players' est un dictionnaire\n qui utilise des paires Player/GamePlayer\n pour pouvoir bien les associer" as N1
+N1..Player
 Game --> Player: +Players
 Game --> GamePlayer: +Players
-note for OperationManager "Le 1er dictionnaire sert à stocker le nombre\n d'opérations restantes alors que le second sert\n à stocker la manière de calculer chaque \n opération, à l'aide de fonctions anonymes\n (fonctions prenant deux Int en entrée et\n rendant un int). On pourrait alors ajouter \n plusieurs moyens de calculer les opérations\n en faisant implémentant l'interface de\n différentes manières"
+note "Le 1er dictionnaire sert à stocker le nombre\n d'opérations restantes alors que le second sert\n à stocker la manière de calculer chaque \n opération, à l'aide de fonctions anonymes\n (fonctions prenant deux Int en entrée et\n rendant un int). On pourrait alors ajouter \n plusieurs moyens de calculer les opérations\n en faisant implémentant l'interface de\n différentes manières" as N2
+N2..OperationManager
 GamePlayer --> OperationManager
 Classic --|> OperationManager
 Game -- GameMode
-note for OperationManager "-OperationDict: map(Operation, int) \n -CalculDict: map(Operation, func)"
+note "-OperationDict: map(Operation, int) \n -CalculDict: map(Operation, func)" as N3
+N3..OperationManager
 ClassicGameMode --|> GameMode
 OperationManager --> Operation
+@enduml
 ```
 
