@@ -37,6 +37,13 @@ const styles = {
     
     "4col": {
         flex: 4
+    },
+    text: {
+        fontSize: 30,
+        fontWeight: "bold",
+        textAlign: "center",
+        textAlignVertical: "center",
+        fontFamily: 'Sketch',
     }
 };
 
@@ -57,7 +64,7 @@ export function OperationGrid() {
             <View style={styles.app}>
                 <Row>
                     <Col numRows={2}>
-                       <Text></Text>
+                       <Text style={styles.text}>x</Text>
                     </Col>
                     <Col numRows={2}>
                         <Text></Text>
