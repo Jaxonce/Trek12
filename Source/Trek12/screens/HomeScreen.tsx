@@ -5,12 +5,12 @@ import {OperationGrid} from '../components/OperationGrid';
 
 export default function HomeScreen() {
     return (
-        <ImageBackground source={require('../assets/bg.png')} resizeMode="cover" style={styles.image}>
+        <ImageBackground source={require('../assets/bg.png')} resizeMode="cover" style={styles.image}><OperationGrid></OperationGrid>
             <View style={styles.container}>
                 <ButtonNav text='Creer une partie'></ButtonNav>
                 <ButtonNav text='Rejoindre une partie'></ButtonNav>
             </View>
-            <OperationGrid></OperationGrid>
+            
         </ImageBackground>
         
     );

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, Text, ImageBackground } from 'react-native';
+import { View, Text, ImageBackground, Image } from 'react-native';
 
 // Styles
 const styles = {
@@ -9,12 +9,14 @@ const styles = {
         height: 200,
         alignItems: 'center',
         justifyContent: 'center',
+        alignSelf: 'flex-end',
+        justifySelf: 'flex-start',
         
     },
     app: {
         flex: 4, // the number of columns you want to devide the screen into
         width: 120,
-        position: 'absolute',
+        position: 'relative',
         top: 23,
         right: 26,
         
@@ -27,12 +29,10 @@ const styles = {
     
     "2col": {
         backgroundColor: "transparent",
-        borderColor: "#fff",
-        borderWidth: 1,
         flex: 2,
         width: 30,
         height: 30,
-
+        borderColor: "black",
     },
     
     "4col": {
@@ -44,6 +44,13 @@ const styles = {
         textAlign: "center",
         textAlignVertical: "center",
         fontFamily: 'Sketch',
+    },
+    xmark: {
+        width: 20,
+        height: 20,
+        
+        alignSelf: "center",
+        justifySelf: "center",
     }
 };
 
@@ -59,77 +66,78 @@ const Row = ({ children }) => (
 )
 
 export function OperationGrid() {
+    const xmark = "x";
     return (
         <ImageBackground style={styles.image} source={require("../assets/grille_operation.png")}>
             <View style={styles.app}>
                 <Row>
                     <Col numRows={2}>
-                       <Text style={styles.text}>x</Text>
+                       <Text style={styles.text}>{xmark}</Text>
                     </Col>
                     <Col numRows={2}>
-                        <Text></Text>
+                        <Text style={styles.text}></Text>
                     </Col>
                     <Col numRows={2}>
-                        <Text></Text>
+                        <Text style={styles.text}></Text>
                     </Col>
                     <Col numRows={2}>
-                        <Text></Text>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col numRows={2}>
-                        <Text></Text>
-                    </Col>
-                    <Col numRows={2}>
-                        <Text></Text>
-                    </Col>
-                    <Col numRows={2}>
-                        <Text></Text>
-                    </Col>
-                    <Col numRows={2}>
-                        <Text></Text>
+                        <Text style={styles.text}></Text>
                     </Col>
                 </Row>
                 <Row>
                     <Col numRows={2}>
-                        <Text></Text>
+                        <Text style={styles.text}>{xmark}</Text>
                     </Col>
                     <Col numRows={2}>
-                        <Text></Text>
+                        <Text style={styles.text}>{xmark}</Text>
                     </Col>
                     <Col numRows={2}>
-                        <Text></Text>
+                        <Text style={styles.text}>{xmark}</Text>
                     </Col>
                     <Col numRows={2}>
-                        <Text></Text>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col numRows={2}>
-                        <Text></Text>
-                    </Col>
-                    <Col numRows={2}>
-                        <Text></Text>
-                    </Col>
-                    <Col numRows={2}>
-                        <Text></Text>
-                    </Col>
-                    <Col numRows={2}>
-                        <Text></Text>
+                        <Text style={styles.text}>{xmark}</Text>
                     </Col>
                 </Row>
                 <Row>
                     <Col numRows={2}>
-                        <Text></Text>
+                        <Text style={styles.text}>{xmark}</Text>
                     </Col>
                     <Col numRows={2}>
-                        <Text></Text>
+                        <Text style={styles.text}>{xmark}</Text>
                     </Col>
                     <Col numRows={2}>
-                        <Text></Text>
+                        <Text style={styles.text}>{xmark}</Text>
                     </Col>
                     <Col numRows={2}>
-                        <Text></Text>
+                        <Text style={styles.text}>{xmark}</Text>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col numRows={2}>
+                        <Text style={styles.text}>{xmark}</Text>
+                    </Col>
+                    <Col numRows={2}>
+                        <Text style={styles.text}>{xmark}</Text>
+                    </Col>
+                    <Col numRows={2}>
+                        <Text style={styles.text}></Text>
+                    </Col>
+                    <Col numRows={2}>
+                        <Text style={styles.text}></Text>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col numRows={2}>
+                        <Text style={styles.text}>{xmark}</Text>
+                    </Col>
+                    <Col numRows={2}>
+                        <Text style={styles.text}>{xmark}</Text>
+                    </Col>
+                    <Col numRows={2}>
+                        <Text style={styles.text}>{xmark}</Text>
+                    </Col>
+                    <Col numRows={2}>
+                        <Text style={styles.text}></Text>
                     </Col>
                 </Row>
             </View>
