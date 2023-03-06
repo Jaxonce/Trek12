@@ -5,20 +5,25 @@ import { View, Text, ImageBackground, Image } from 'react-native';
 const styles = {
     image: {
         flex: 1,
-        width: 200,
-        height: 200,
+        width: 150,
+        height: 150,
         alignItems: 'center',
         justifyContent: 'center',
         alignSelf: 'flex-end',
         justifySelf: 'flex-start',
+        position: 'absolute',
+        right: "10%",
+        top: 0,
         
     },
     app: {
-        flex: 4, // the number of columns you want to devide the screen into
-        width: 120,
-        position: 'relative',
-        top: 23,
-        right: 26,
+        flex: 1, // the number of columns you want to devide the screen into
+        width: 90,
+        height: 110,
+        position: 'absolute',
+        padding: 0,
+        top: 19,
+        right: 19,
         
         transform: [{rotate : "-2.5deg"}]
     },
@@ -30,27 +35,25 @@ const styles = {
     "2col": {
         backgroundColor: "transparent",
         flex: 2,
-        width: 30,
-        height: 30,
+        width: 'auto',
+        height: 'auto',
         borderColor: "black",
+        padding: 5,
+        margin: 0,
     },
     
     "4col": {
         flex: 4
     },
     text: {
-        fontSize: 30,
+        fontSize: 15,
         fontWeight: "bold",
-        textAlign: "center",
-        textAlignVertical: "center",
         fontFamily: 'Sketch',
     },
     xmark: {
-        width: 20,
-        height: 20,
+        width: 15,
+        height: 15,
         
-        alignSelf: "center",
-        justifySelf: "center",
     }
 };
 
@@ -62,81 +65,104 @@ const Col = ({ numRows, children }) => {
 }
 
 const Row = ({ children }) => (
+    // @ts-ignore
     <View style={styles.row}>{children}</View>
 )
 
 export function OperationGrid() {
     const xmark = "x";
     return (
+        // @ts-ignore
         <ImageBackground style={styles.image} source={require("../assets/grille_operation.png")}>
+            {/* @ts-ignore */}
             <View style={styles.app}>
                 <Row>
                     <Col numRows={2}>
+                        {/* @ts-ignore */}
                        <Text style={styles.text}>{xmark}</Text>
                     </Col>
                     <Col numRows={2}>
+                        {/* @ts-ignore */}
                         <Text style={styles.text}></Text>
                     </Col>
                     <Col numRows={2}>
+                        {/* @ts-ignore */}
                         <Text style={styles.text}></Text>
                     </Col>
                     <Col numRows={2}>
-                        <Text style={styles.text}></Text>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col numRows={2}>
-                        <Text style={styles.text}>{xmark}</Text>
-                    </Col>
-                    <Col numRows={2}>
-                        <Text style={styles.text}>{xmark}</Text>
-                    </Col>
-                    <Col numRows={2}>
-                        <Text style={styles.text}>{xmark}</Text>
-                    </Col>
-                    <Col numRows={2}>
-                        <Text style={styles.text}>{xmark}</Text>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col numRows={2}>
-                        <Text style={styles.text}>{xmark}</Text>
-                    </Col>
-                    <Col numRows={2}>
-                        <Text style={styles.text}>{xmark}</Text>
-                    </Col>
-                    <Col numRows={2}>
-                        <Text style={styles.text}>{xmark}</Text>
-                    </Col>
-                    <Col numRows={2}>
-                        <Text style={styles.text}>{xmark}</Text>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col numRows={2}>
-                        <Text style={styles.text}>{xmark}</Text>
-                    </Col>
-                    <Col numRows={2}>
-                        <Text style={styles.text}>{xmark}</Text>
-                    </Col>
-                    <Col numRows={2}>
-                        <Text style={styles.text}></Text>
-                    </Col>
-                    <Col numRows={2}>
+                        {/* @ts-ignore */}
                         <Text style={styles.text}></Text>
                     </Col>
                 </Row>
                 <Row>
                     <Col numRows={2}>
+                        {/* @ts-ignore */}
                         <Text style={styles.text}>{xmark}</Text>
                     </Col>
                     <Col numRows={2}>
+                        {/* @ts-ignore */}
                         <Text style={styles.text}>{xmark}</Text>
                     </Col>
                     <Col numRows={2}>
+                        {/* @ts-ignore */}
                         <Text style={styles.text}>{xmark}</Text>
                     </Col>
                     <Col numRows={2}>
+                        {/* @ts-ignore */}
+                        <Text style={styles.text}>{xmark}</Text>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col numRows={2}>
+                        {/* @ts-ignore */}
+                        <Text style={styles.text}>{xmark}</Text>
+                    </Col>
+                    <Col numRows={2}>
+                        {/* @ts-ignore */}
+                        <Text style={styles.text}>{xmark}</Text>
+                    </Col>
+                    <Col numRows={2}>
+                        {/* @ts-ignore */}
+                        <Text style={styles.text}>{xmark}</Text>
+                    </Col>
+                    <Col numRows={2}>
+                        {/* @ts-ignore */}
+                        <Text style={styles.text}>{xmark}</Text>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col numRows={2}>
+                        {/* @ts-ignore */}
+                        <Text style={styles.text}>{xmark}</Text>
+                    </Col>
+                    <Col numRows={2}>
+                        {/* @ts-ignore */}
+                        <Text style={styles.text}>{xmark}</Text>
+                    </Col>
+                    <Col numRows={2}>
+                        {/* @ts-ignore */}
+                        <Text style={styles.text}></Text>
+                    </Col>
+                    <Col numRows={2}>
+                        {/* @ts-ignore */}
+                        <Text style={styles.text}></Text>
+                    </Col>
+                </Row>
+                <Row>
+                    <Col numRows={2}>
+                        {/* @ts-ignore */}
+                        <Text style={styles.text}></Text>
+                    </Col>
+                    <Col numRows={2}>
+                        {/* @ts-ignore */}
+                        <Text style={styles.text}></Text>
+                    </Col>
+                    <Col numRows={2}>
+                        {/* @ts-ignore */}
+                        <Text style={styles.text}></Text>
+                    </Col>
+                    <Col numRows={2}>
+                        {/* @ts-ignore */}
                         <Text style={styles.text}></Text>
                     </Col>
                 </Row>
