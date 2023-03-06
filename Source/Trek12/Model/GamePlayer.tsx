@@ -9,11 +9,14 @@ class GamePlayer{
     constructor(){
         this.Score = 0
         this.Penalties = 0
-        this.Grid = new Grid
+        this.Grid = new Grid()
     }
 
-    public PlaceValue(c: Cell,value: number){
-        g = set
+    public PlaceValue(idCell: number,value: number): void{
+        var cell = this.getGrid().findCellById(idCell)
+        if(cell!=null && cell.isEmpty()==true){
+            cell.setValue(value)
+        }
     }
 
     public setScore(s: number): void{
@@ -22,6 +25,10 @@ class GamePlayer{
 
     public setPenalties(p: number): void{
         this.Penalties = p
+    }
+
+    public setGrid(g: Grid): void{
+        this.Grid = g
     }
 
     public getScore(): number{

@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Text, View, StyleSheet, ImageBackground } from 'react-native';
 import ButtonNav from '../components/ButtonNav';
+import Classic from '../Model/Classic';
+
+const op = new Classic()
 
 export default function HomeScreen() {
     return (

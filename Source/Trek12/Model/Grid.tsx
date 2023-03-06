@@ -11,10 +11,10 @@ class Grid{
         this.Size = 0;
     }
 
-    public addCell(x: number, y:number, v: number, type:Celltype): void{
+    public addCell(id: number, value: number, type:Celltype): void{
 
-        if(!this.findCell){
-            this.Cells.push(new Cell(x,y,v,type))
+        if(this.findCellById(id)==null){
+            this.Cells.push(new Cell(id,value,type))
         }
     }
 
@@ -22,13 +22,13 @@ class Grid{
         return this.Cells
     }
 
-    public findCell(x: number, y: number): boolean {
+    public findCellById(id: number): Cell {
         for (const cell of this.Cells) {
-          if (cell.getX() === x && cell.getY() === y) {
-            return true;
+          if (cell.getId() == id) {
+            return cell;
           }
         }
-        return false;
+        return null
       }
     public getSize(): number{
         return this.Size

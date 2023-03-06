@@ -1,9 +1,9 @@
 enum Operation {
-    PLUS,
-    MINUS,
-    MULTIPLY,
-    MAXVALUE,
-    MINVALUE
+    PLUS = "plus",
+    MINUS = "minus",
+    MULTIPLY = "multiply",
+    MAXVALUE = "maxvalue",
+    MINVALUE = "minvalue"
 }
 
 export default Operation
