@@ -4,6 +4,7 @@ import HomeScreen from './screens/HomeScreen';
 import GameScreen from './screens/GameScreen';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import { useFonts } from 'expo-font';
+import StartNavigation from './components/StartNavigation';
 
 
 //Changer le landscape en right avant de commit
@@ -17,6 +18,6 @@ export default function App() {
     return null;
   }
   return (
-    <GameScreen></GameScreen>
+    <StartNavigation></StartNavigation>
   );
 }

@@ -1,14 +1,25 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, ImageBackground } from 'react-native';
+import { Text, View, StyleSheet, ImageBackground, Touchable } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import ButtonNav from '../components/ButtonNav';
+import InputBox from '../components/InputBox';
+import { useNavigation } from '@react-navigation/native';
+import StartNavigation from '../components/StartNavigation';
+import JoinGameScreen from './JoinGameScreen';
 
-export default function HomeScreen() {
+
+
+export default function HomeScreen({navigation}) {
+    const goToNewPlay = () => {navigation.navigate("CreateGameScreen")}
+    const goToOther = () => {navigation.navigate("JoinGameScreen")}
     return (
         <ImageBackground source={require('../assets/bg.png')} resizeMode="cover" style={styles.image}>
             <View style={styles.container}>
-                <ButtonNav text='Creer une partie'></ButtonNav>
-                <ButtonNav text='Rejoindre une partie'></ButtonNav>
+                <ButtonNav onPress={()=>goToNewPlay()}  text='Creer une partie'/>
+                
+                <ButtonNav onPress={()=>goToOther()} text='Rejoindre une partie'/>
             </View>
+            <InputBox text=""></InputBox>
         </ImageBackground>
         
     );

@@ -1,16 +1,10 @@
 import React, {useState} from 'react';
 import { Text, View, StyleSheet, ImageBackground, Pressable, Image } from 'react-native';
 
-export default function PauseButton() {
-    const [isPaused, setIsPaused] = useState(false);
-
-    const DisplayMenu = () => {
-        
-    }
-
+export default function PauseButton({navigation : {navigate}}) {
     return (
         <ImageBackground source={require("../assets/bg_wood.jpg")} style={styles.backgroundImage} imageStyle={{borderRadius: 20}}>
-            <Pressable onPress={DisplayMenu}>
+            <Pressable onPress={() => navigate('PauseScreen')}>
                 <View style={styles.iconContainer}>
                     <Image source={require("../assets/icon-pause-512.webp")} style={styles.icon}/>
                 </View>

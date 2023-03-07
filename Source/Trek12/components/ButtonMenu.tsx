@@ -1,17 +1,13 @@
 import * as React from "react";
-import { View, Text, StyleSheet, Button, Pressable } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { View, Text, StyleSheet, Button, Pressable, Image, ImageBackground } from "react-native";
 
-
-//buttonNav props
-type ButtonNavProps = {
+type ButtonMenuProps = {
     text: string;
     onPress : any;
 }
 
-export default function ButtonNav(props: ButtonNavProps){
-  return (
-
+export default function ButtonMenu(props: ButtonMenuProps) {
+    return (
         <Pressable onPress={props.onPress} style={({ pressed }) => [
             {
               opacity: pressed
@@ -19,17 +15,17 @@ export default function ButtonNav(props: ButtonNavProps){
                 : 1,
               backgroundColor: '#2277ee'
             },
-            styles.bigButton,
+            styles.ButtonMenu,
           ]}>
             <Text style={styles.text}>{props.text}</Text>
           </Pressable>
     );
-};
+}
 
 const styles = StyleSheet.create({
-    bigButton: {
-        width: 265,
-        height: 114,
+    ButtonMenu: {
+        width: 150,
+        height: 100,
         backgroundColor: "rgba(217, 217, 217, 0.53)",
         borderRadius: 22,
         boxShadow: '0 12px 6px 0 rgba(0, 0, 0, 0.41)',
@@ -38,7 +34,6 @@ const styles = StyleSheet.create({
         borderColor: '#583929',
         borderStyle: 'solid',
         flex: 0,
-        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
     },
@@ -50,5 +45,3 @@ const styles = StyleSheet.create({
         fontFamily: 'Sketch',
     }
 });
-
-
