@@ -1,11 +1,16 @@
 import React, {useRef, useEffect} from 'react';
-import { Text, View, StyleSheet, SafeAreaView, Image, Dimensions, ImageBackground } from 'react-native';
+import { Text, View, StyleSheet, SafeAreaView, Image, ImageBackground } from 'react-native';
+import PauseButton from '../components/PauseButton';
+import DiceButton from '../components/DiceButton';
 
 
 export default function GameScreen() {
     return (
         <ImageBackground source={require(".././assets/bg_game.png")} style={styles.backgroundImage}>
-            <Text style={{fontFamily: "Sketch", fontSize: 30,}}>1/19</Text>
+            <Text style={{fontFamily: "Sketch", fontSize: 30, top: 15, left: 340}}>1/19</Text>
+            <PauseButton/>
+            <DiceButton backgroundColor="yellow" number={0} top="-7%" left="50%"/>
+            <DiceButton backgroundColor="red" number={1} top="-23%" left="58%"/>
         </ImageBackground>
     );
 }
@@ -13,12 +18,6 @@ export default function GameScreen() {
 const styles = StyleSheet.create({
     backgroundImage: {
     flex: 1,
-    top: 0,
-    left: 0,
-    right: 0,
-    bottom: 0,
-    jusrifyContent: 'center',
-    alignItems: 'center',
     transform:[{translateX: 0}, {translateY: 0}]
     },
 });
