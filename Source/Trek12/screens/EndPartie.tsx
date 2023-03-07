@@ -6,6 +6,7 @@ import InputBox from '../components/InputBox';
 import { useNavigation } from '@react-navigation/native';
 import StartNavigation from '../components/StartNavigation';
 import JoinGameScreen from './JoinGameScreen';
+import EndOperation from '../components/EndOperationGrid';
 
 
 
@@ -14,6 +15,8 @@ export default function EndScreen({navigation}) {
     const goToOther = () => {navigation.navigate("JoinGameScreen")}
     return (
         <ImageBackground source={require('../assets/bg.png')} resizeMode="cover" style={styles.image}>
+            <EndOperation></EndOperation>
+            <EndOperation></EndOperation>
         </ImageBackground>
         
     );
@@ -31,6 +34,8 @@ const styles = StyleSheet.create({
     image: {
         flex: 1,
         justifyContent: "center",
+        width: '100%',
+        height: '100%',
         transform: [{ translateX: 0 }, { translateY: 0 }]
       },
 });
