@@ -2,7 +2,7 @@ import OperationManager from "./OperationManager";
 import Operation from "./Operation";
  
 
-class Classic extends OperationManager {
+class ClassicOperationManager extends OperationManager {
 
     constructor(){
         super()
@@ -32,4 +32,4 @@ class Classic extends OperationManager {
     }
 }
 
-export default Classic
+export default ClassicOperationManager
