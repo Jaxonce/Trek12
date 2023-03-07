@@ -1,16 +1,21 @@
 import Cell from "./Cell"
 import Grid from "./Grid"
+import OperationManager from "./OperationManager"
 
 class GamePlayer{
     private Score: number
     private Penalties: number
-    private Grid: Grid  
+    private Grid: Grid 
+    private Operations: OperationManager 
 
-    constructor(){
+    constructor(operations: OperationManager){
         this.Score = 0
         this.Penalties = 0
         this.Grid = new Grid()
+        this.Operations = operations
     }
+
+    public setOperations
 
     public PlaceValue(idCell: number,value: number): void{
         var cell = this.getGrid().findCellById(idCell)

@@ -19,6 +19,20 @@ abstract class OperationManager {
   public setCalculDict(value: Map<Operation, (a: number, b: number) => number>) {
     this.calculDict = value;
   }
+
+  public useOperation(o: Operation): boolean{
+    if(this.operationDict.has(o)){
+      return false
+    }
+
+    const currentvalue: number = this.getOperationDict().get(o)
+    if(currentvalue <= 0){
+      return false
+    }
+    this.operationDict.set(o, currentvalue-1)
+    return true
+  }
+
 }
 
 export default OperationManager
