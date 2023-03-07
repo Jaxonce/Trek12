@@ -47,4 +47,6 @@ class GamePlayer{
     public getGrid(): Grid{
         return this.Grid
     }
+
 }
+export default GamePlayer
