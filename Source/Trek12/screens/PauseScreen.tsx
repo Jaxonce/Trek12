@@ -4,14 +4,16 @@ import ButtonMenu from '../components/ButtonMenu';
 
 export default function PauseScreen({navigation}) {
     const goToResume = () => {navigation.navigate('GameScreen')};
+    const goToOptions = () => {navigation.navigate('OptionsScreen')};
+    const goToQuit = () => {navigation.navigate('HomeScreen')};
     return(
         <ImageBackground source={require(".././assets/bg_wood.jpg")} style={styles.backgroundImage}>
             <View style={styles.container}>
                 <ButtonMenu onPress={()=>goToResume()}  text='Resume'/>
                 <View style={{marginTop: 10}}/>
-                <ButtonMenu onPress={()=>goToResume()} text='Options'/>
+                <ButtonMenu onPress={()=>goToOptions()} text='Options'/>
                 <View style={{marginTop: 10}}/>
-                <ButtonMenu onPress={()=>goToResume()} text='Quit'/>
+                <ButtonMenu onPress={()=>goToQuit()} text='Quit'/>
             </View>
         </ImageBackground>
     );

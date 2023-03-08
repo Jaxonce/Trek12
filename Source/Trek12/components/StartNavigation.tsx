@@ -6,6 +6,7 @@ import JoinGameScreen from '../screens/JoinGameScreen';
 import CreateGameScreen from '../screens/CreateGameScreen';
 import PauseScreen from '../screens/PauseScreen';
 import GameScreen from '../screens/GameScreen';
+import OptionsScreen from '../screens/OptionsScreen';
 
 
 export default function StartNavigation() {
@@ -31,6 +32,11 @@ export default function StartNavigation() {
           <Stack.Screen
             name="PauseScreen"
             component={PauseScreen}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="OptionsScreen"
+            component={OptionsScreen}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
