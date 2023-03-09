@@ -1,24 +1,46 @@
 import * as React from 'react';
-import { View, StyleSheet, ImageBackground } from 'react-native';
+import { View, StyleSheet, ImageBackground, ScrollView } from 'react-native';
 import CodeBoxInput from '../components/CodeBoxInput';
 import ButtonOk from '../components/ButtonOK';
 import ButtonBack from '../components/ButtonBack';
 
 export default function JoinGameScreen({navigation}) {
-    const backToHome = () => {navigation.navigate("Home")}
+    const backToHome = () => {navigation.navigate("HomeScreen")}
     return (
-        <ImageBackground source={require('../assets/bg.png')} resizeMode="cover" style={styles.image}>
-            <View style={styles.ButtonBack}>
-                <ButtonBack onPress={()=>backToHome()}></ButtonBack>
+        <ScrollView 
+            keyboardShouldPersistTaps="handled" // ajout de la propriété keyboardShouldPersistTaps
+            contentContainerStyle={styles.scrollView}
+        >
+            <View style={styles.imageContainer}>
+                <ImageBackground 
+                    source={require('../assets/bg.png')} 
+                    resizeMode="cover" 
+                    style={styles.image}
+                />
             </View>
-            <CodeBoxInput text="Rentrer le code"/>
-            <ButtonOk/>
-        </ImageBackground>
-        
+                <View style={styles.ButtonBack}>
+                    <ButtonBack onPress={()=>backToHome()}></ButtonBack>
+                </View>
+                <CodeBoxInput text="Rentrer le code"/>
+                <ButtonOk/>
+        </ScrollView>
     );
     }
 
 const styles = StyleSheet.create({
+    scrollView: {
+        flexGrow: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
+    imageContainer: {
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        bottom: 0,
+        right: 0,
+        zIndex: -1, // définit la position relative de l'image de fond
+    },
     image: {
         flex: 1,
         justifyContent: "center",
@@ -26,8 +48,9 @@ const styles = StyleSheet.create({
         transform: [{ translateX: 0 }, { translateY: 0 }]
     },
     ButtonBack: {
-        width:"100%",
-        height:"auto",
-        alignItems: "flex-start",
-    }
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        zIndex: 1
+    },
 });

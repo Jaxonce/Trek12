@@ -4,7 +4,7 @@ import ButtonBack from '../components/ButtonBack';
 import CodeBox from '../components/CodeBox';
 
 export default function CreateGameScreen({navigation}) {
-    const backToHome = () => {navigation.navigate("Home")}
+    const backToHome = () => {navigation.navigate("HomeScreen")}
     return (
         <ImageBackground source={require('../assets/bg.png')} resizeMode="cover" style={styles.image}>
             <View style={styles.ButtonBack}>

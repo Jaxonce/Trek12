@@ -38,6 +38,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         textAlign: 'center',
+        marginTop: 5,
         fontFamily: 'Sketch',
     },
     background: {

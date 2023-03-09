@@ -11,8 +11,8 @@ export default function GameScreen({navigation}) {
         <ImageBackground source={require(".././assets/bg_game.png")} style={styles.backgroundImage}>
             <Text style={{fontFamily: "Sketch", fontSize: 30, top: 15, left: 340}}>{turn[0]}</Text>
             <PauseButton navigation={navigation}></PauseButton>
-            <DiceButton backgroundColor="yellow" number={0} top="-7%" left="50%"/>
-            <DiceButton backgroundColor="red" number={1} top="-23%" left="58%"/>
+            <DiceButton backgroundColor="yellow" number="0" top="-7%" left="50%"/>
+            <DiceButton backgroundColor="red" number="1" top="-23%" left="58%"/>
         </ImageBackground>
     );
 }
