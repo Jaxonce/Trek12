@@ -1,5 +1,6 @@
 import Cell from "./Cell"
 import Grid from "./Grid"
+import GridTemplate from "./GridTemplate"
 import OperationManager from "./OperationManager"
 
 class GamePlayer{
@@ -8,10 +9,10 @@ class GamePlayer{
     private Grid: Grid 
     private Operations: OperationManager 
 
-    constructor(operations: OperationManager){
+    constructor(operations: OperationManager, gt: GridTemplate){
         this.Score = 0
         this.Penalties = 0
-        this.Grid = new Grid()
+        this.Grid = new Grid(gt)
         this.Operations = operations
     }
 
@@ -22,6 +23,11 @@ class GamePlayer{
         if(cell!=null && cell.isEmpty()==true){
             cell.setValue(value)
         }
+    }
+
+    public calculateScore(): score{
+        // Count Chains
+        this.getGrid().getCells().forEach(cell => )
     }
 
     public setScore(s: number): void{

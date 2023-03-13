@@ -1,18 +1,13 @@
+import Game from "./Game";
 import GridTemplate from "./GridTemplate";
+import OperationManager from "./OperationManager";
 
-abstract class GameMode{
-    private template: GridTemplate
+abstract class GameFactory{
 
-    abstract initialize(): void
-
-    public getTemplate(): GridTemplate{
-        return this.template
-    }
-
-    public setTemplate(g: GridTemplate){
-        this.template = g
+    public intitialize(om: OperationManager, gt: GridTemplate, maxTurns : number): Game{
+        return new Game(gt, om, maxTurns)
     }
 
 }
 
-export default GameMode
+export default GameFactory

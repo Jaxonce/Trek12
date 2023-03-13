@@ -1,22 +1,26 @@
 import ClassicGameMode from "./ClassicGameMode";
 import ClassicOperationManager from "./ClassicOperationManager";
-import GameMode from "./GameMode";
 import GamePlayer from "./GamePlayer";
+import GridTemplate from "./GridTemplate";
 import OperationManager from "./OperationManager";
 import Player from "./Player";
 
 class Game{
     private Players: Map<Player,GamePlayer>
     private Winner: Player
-    private DiceHistory: Array<Array<number>>
-    private Gamemode: GameMode
+    private DiceHistory: Array<[number, number]>
     private ActualTurn: number
+    private gridTemplate: GridTemplate
+    private operationManager: OperationManager
+    private maxTurns: number
 
-    constructor(g: GameMode){
-        this.DiceHistory = new Array<Array<number>>()
-        this.Gamemode = g
+    constructor(gt: GridTemplate, om: OperationManager, maxTurns: number){
+        this.DiceHistory = new Array()
         this.setActualTurn(1)
         this.Players = new Map<Player,GamePlayer>()
+        this.gridTemplate = gt
+        this.operationManager = om
+        this.maxTurns = maxTurns
     }
 
     public addPlayer(p: Player): boolean{
@@ -24,7 +28,7 @@ class Game{
             return false 
         }
         
-        this.Players.set(p, new GamePlayer(this.selectOperationManager()))
+        this.Players.set(p, new GamePlayer(this.getOperationManager(), this.getGridTemplate))
         return true
     }
 
@@ -32,20 +36,12 @@ class Game{
         this.DiceHistory.push([val1, val2])
     }
 
-    /*
     public rollDice(min: number, max: number): number{
         const PossibleValues = max - min + 1;
 
         const RandomNumber = Math.floor(Math.random() * PossibleValues) + min;
         return RandomNumber;
     }
-    */
-   public selectOperationManager(): OperationManager{
-        switch(true){
-            case this.getGameMode() instanceof ClassicGameMode:
-                return new ClassicOperationManager
-        }
-   }
 
    public incrementTurn(){
         this.setActualTurn(this.getActualTurn()+1)
@@ -71,19 +67,37 @@ class Game{
         this.Winner = p
     }
 
-    public nextTurn(a: number, b:number): void{
+    public nextTurn(): void{
+        if(this.getActualTurn() == this.getMaxTurns()){
+            this.endGame()
+        }
+        else{
+            this.incrementTurn()
+            var value1 = this.rollDice(0,5)
+            var value2 = this.rollDice(1,6)
+            this.pushDiceHistory(value1, value2)
+        }
     }
 
-    public getGameMode(): GameMode{
-        return this.Gamemode
-    }
-
-    public setGameMode(g: GameMode){
-        this.Gamemode = g
+    public endGame(): void{
+        // TODO
     }
 
     public setActualTurn(x: number){
         this.ActualTurn = x
+    }
+
+    public getOperationManager(): OperationManager{
+        return this.operationManager
+    }
+
+    
+    public getGridTemplate(): GridTemplate{
+        return this.gridTemplate
+    }
+
+    public getMaxTurns(): number{
+        return this.maxTurns
     }
 }
 
