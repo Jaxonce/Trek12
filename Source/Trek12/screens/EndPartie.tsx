@@ -16,7 +16,6 @@ export default function EndScreen({navigation}) {
     return (
         <ImageBackground source={require('../assets/bg.png')} resizeMode="cover" style={styles.image}>
             <EndOperation></EndOperation>
-            <EndOperation></EndOperation>
         </ImageBackground>
         
     );
