@@ -37,6 +37,39 @@ export default function GameScreen({navigation}) {
             <View style={styles.container8}>
                 <Text style={styles.text}>8</Text>
             </View>
+            <View style={styles.container9}>
+                <Text style={styles.text}>9</Text>
+            </View>
+            <View style={styles.container10}>
+                <Text style={styles.text}>10</Text>
+            </View>
+            <View style={styles.container11}>
+                <Text style={styles.text}>11</Text>
+            </View>
+            <View style={styles.container12}>
+                <Text style={styles.text}>12</Text>
+            </View>
+            <View style={styles.container13}>
+                <Text style={styles.text}>13</Text>
+            </View>
+            <View style={styles.container14}>
+                <Text style={styles.text}>14</Text>
+            </View>
+            <View style={styles.container15}>
+                <Text style={styles.text}>15</Text>
+            </View>
+            <View style={styles.container16}>
+                <Text style={styles.text}>16</Text>
+            </View>
+            <View style={styles.container17}>
+                <Text style={styles.text}>17</Text>
+            </View>
+            <View style={styles.container18}>
+                <Text style={styles.text}>18</Text>
+            </View>
+            <View style={styles.container19}>
+                <Text style={styles.text}>19</Text>
+            </View>
         </ImageBackground>
     );
 }
@@ -86,6 +119,61 @@ const styles = StyleSheet.create({
         position: "relative",
         left: "21.3%",
         top: "-59.5%"
+    },
+    container9: {
+        position: "relative",
+        left: "17.5%",
+        top: "-58%"
+    },
+    container10: {
+        position: "relative",
+        left: "24.7%",
+        top: "-86%"
+    },
+    container11: {
+        position: "relative",
+        left: "29.5%",
+        top: "-103%"
+    },
+    container12: {
+        position: "relative",
+        left: "26.3%",
+        top: "-91%"
+    },
+    container13: {
+        position: "relative",
+        left: "22.5%",
+        top: "-90%"
+    },
+    container14: {
+        position: "relative",
+        left: "28.2%",
+        top: "-96%"
+    },
+    container15: {
+        position: "relative",
+        left: "32.1%",
+        top: "-114%"
+    },
+    container16: {
+        position: "relative",
+        left: "35.7%",
+        top: "-132.5%"
+    },
+    container17: {
+        position: "relative",
+        left: "38%",
+        top: "-129.3%"
+    },
+    container18: {
+        position: "relative",
+        left: "41.5%",
+        top: "-148.3%"
+    },
+    container19: {
+        position: "relative",
+        left: "47.1%",
+        top: "-152%"
     },
       text: {
         fontSize: parseFloat('200') / 100 * 16,
