@@ -18,11 +18,11 @@ export default function JoinGameScreen({navigation}) {
                     style={styles.image}
                 />
             </View>
-                <View style={styles.ButtonBack}>
-                    <ButtonBack onPress={()=>backToHome()}></ButtonBack>
-                </View>
-                <CodeBoxInput text="Rentrer le code"/>
-                <ButtonOk/>
+            <View style={styles.ButtonBack}>
+                <ButtonBack onPress={()=>backToHome()}></ButtonBack>
+            </View>
+            <CodeBoxInput text="Rentrer le code"/>
+            <ButtonOk/>
         </ScrollView>
     );
     }
