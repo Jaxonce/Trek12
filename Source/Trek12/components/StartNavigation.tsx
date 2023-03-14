@@ -10,7 +10,7 @@ export default function StartNavigation() {
     const Stack = createStackNavigator();
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="EndPartie">
+        <Stack.Navigator initialRouteName="Home">
           <Stack.Screen 
             name="Home" 
             component={HomeScreen} 
@@ -24,11 +24,6 @@ export default function StartNavigation() {
           <Stack.Screen
             name="JoinGameScreen"
             component={JoinGameScreen}
-            options={{ headerShown: false }}
-          />
-          <Stack.Screen
-            name="EndPartie"
-            component={EndPartie}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
