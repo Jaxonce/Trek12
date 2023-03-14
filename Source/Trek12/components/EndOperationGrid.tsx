@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { View, Text, ImageBackground, Image, Dimensions, TextInput, Keyboard } from 'react-native';
+import { View, Text, ImageBackground, Image, Dimensions, TextInput, Keyboard, KeyboardAvoidingView, Platform, TouchableWithoutFeedback } from 'react-native';
+import KeyboardAwareScrollView from 'react-native-keyboard-aware-scroll-view';
 
 // Styles
 const styles = {
     image: {
-        transform: [{ translateX: 0 }, { translateY: 0 }],
-        position: 'absolute',
-        bottom: 0,
+        // transform: [{ translateX: 0 }, { translateY: 0 }],
+        flex: 0,
     },
     row: {
         flex: 1,
@@ -29,7 +29,7 @@ const styles = {
         margin: 0,
     },
     text: {
-        fontSize: 40,
+        fontSize: 35,
         fontWeight: "bold",
         fontFamily: 'Sketch',
     },
@@ -42,60 +42,60 @@ const styles = {
         flex: 0, // the number of columns you want to devide the screen into
         height: 40,
         position: 'relative',
-        top: '69%',
-        left: 60,
+        top: '67%',
+        left: '7%',
     },
     app: {
         flex: 0, // the number of columns you want to devide the screen into
         height: 40,
         position: 'relative',
-        top: '60%',
-        left: 60,
+        top: '59%',
+        left: '7%',
     },
     bestChaine: {
         flex: 0, // the number of columns you want to devide the screen into
-        height: 40,
+        height: '13%',
         position: 'relative',
         top: '32%',
         left: '49%',
-        width: 40,
+        width: '13%',
     },
     bestZone: {
         flex: 0, // the number of columns you want to devide the screen into
-        height: 40,
+        height: '13%',
         position: 'relative',
-        top: '40%',
-        left: '49%',
-        width: 40,
+        top: '41%',
+        left: '48.5%',
+        width: '13%',
     },
     bestZoneResult: {
         flex: 0, // the number of columns you want to devide the screen into
-        height: 40,
+        height: '13%',
         position: 'relative',
-        top: '13%',
-        left: '58%',
+        top: '15%',
+        left: '57.5%',
     },
     bestChaineResult: {
         flex: 0, // the number of columns you want to devide the screen into
-        height: 40,
+        height: '13%',
         position: 'relative',
-        top: '5%',
-        left: '58%',
+        top: '7%',
+        left: '57.5%',
     },
     malusZone: {
         flex: 0, // the number of columns you want to devide the screen into
-        height: 40,
+        height: '13%',
         position: 'relative',
-        bottom: '12%',
-        left: '75%',
-        width: 40,
+        bottom: '8%',
+        left: '74.5%',
+        width: '13%',
     },
     totalResult: {
         flex: 0, // the number of columns you want to devide the screen into
         height: 100,
         position: 'relative',
-        bottom: '35%',
-        left: '85%',
+        bottom: '30%',
+        left: '84.8%',
         width: 100,
     },
 };
@@ -116,141 +116,146 @@ export default function EndOperation() {
     const screenWidth = Dimensions.get('window').width;
     const screenHeight = Dimensions.get('window').height;
     return (
-        // @ts-ignore
-        <ImageBackground style={[styles.image, { width: screenWidth, height: screenHeight - 100 }]} source={require("../assets/grilleCalculPoint.png")}>
-            {/* @ts-ignore */}
-            <View style={[styles.app, { width: styles.app.height * 8 }]}>
-                <Row>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                </Row>
-            </View>
+        <KeyboardAvoidingView style={{ flex: 1 }} behavior={Platform.OS === 'ios' ? 'position' : 'height'}>
+            <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+                {/* @ts-ignore */}
+                <ImageBackground style={[styles.image, { width: screenWidth, height: screenHeight*0.8, position:'absolute', top: screenHeight*0.2 }]} source={require("../assets/grilleCalculPoint.png")}>
+                    {/* @ts-ignore */}
+                    <View style={[styles.app, { width: styles.app.height * 8 }]}>
+                        <Row>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
+                            </Col>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
+                            </Col>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
 
-            {/* @ts-ignore */}
-            <View style={[styles.app2, { width: styles.app.height * 8 }]}>
-                <Row>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput inputMode="tel" style={styles.text} />
-                    </Col>
-                </Row>
-            </View>
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
 
-            {/* @ts-ignore */}
-            <View style={[styles.bestChaine, { width: styles.app.height }]}>
-                <Row>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput keyboardType={'number-pad'} onPressOut={() => Keyboard.dismiss()} maxLength="2" style={styles.text} />
-                    </Col>
-                </Row>
-            </View>
+                            </Col>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
+                            </Col>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
+                            </Col>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
+                            </Col>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
+                            </Col>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
+                            </Col>
+                        </Row>
+                    </View>
 
-            {/* @ts-ignore */}
-            <View style={[styles.bestZone, { width: styles.app.height }]}>
-                <Row>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput keyboardType={'number-pad'} onPressOut={() => Keyboard.dismiss()} maxLength="2" style={styles.text} />
-                    </Col>
-                </Row>
-            </View>
-            {/* @ts-ignore */}
-            <View style={[styles.bestChaineResult, { width: styles.app.height*1.25 }]}>
-                <Row>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput keyboardType={'number-pad'} onPressOut={() => Keyboard.dismiss()} maxLength="2" style={styles.text} />
-                    </Col>
-                </Row>
-            </View>
-            {/* @ts-ignore */}
-            <View style={[styles.bestZoneResult, { width: styles.app.height*1.25 }]}>
-                <Row>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput keyboardType={'number-pad'} onPressOut={() => Keyboard.dismiss()} maxLength="2" style={styles.text} />
-                    </Col>
-                </Row>
-            </View>
-            {/* @ts-ignore */}
-            <View style={[styles.malusZone, { width: styles.app.height*1.25 }]}>
-                <Row>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput keyboardType={'number-pad'} onPressOut={() => Keyboard.dismiss()} maxLength="2" style={styles.text} />
-                    </Col>
-                </Row>
-            </View>
-            {/* @ts-ignore */}
-            <View style={[styles.totalResult]}>
-                <Row>
-                    <Col numRows={2}>
-                        {/* @ts-ignore */}
-                        <TextInput keyboardType={'number-pad'} onPressOut={() => Keyboard.dismiss()} maxLength="3" style={[styles.text,{fontSize: 60, textAlign: 'center', textAlignVertical : 'center'}]} />
-                    </Col>
-                </Row>
-            </View>
-        </ImageBackground>
+                    {/* @ts-ignore */}
+                    <View style={[styles.app2, { width: styles.app.height * 8 }]}>
+                        <Row>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
+                            </Col>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
+                            </Col>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
+                            </Col>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
+                            </Col>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
+                            </Col>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
+                            </Col>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
+                            </Col>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput inputMode="tel" style={styles.text} maxLength={Platform.OS === "ios" ? "2" : null}/>
+                            </Col>
+                        </Row>
+                    </View>
 
+                    {/* @ts-ignore */}
+                    <View style={[styles.bestChaine, { width: styles.app.height }]}>
+                        <Row>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput keyboardType={'number-pad'} onPressOut={() => Keyboard.dismiss()} maxLength={Platform.OS === "ios" ? "2" : null} style={styles.text} />
+                            </Col>
+                        </Row>
+                    </View>
+
+                    {/* @ts-ignore */}
+                    <View style={[styles.bestZone, { width: styles.app.height }]}>
+                        <Row>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput keyboardType={'number-pad'} onPressOut={() => Keyboard.dismiss()} maxLength={Platform.OS === "ios" ? "2" : null} style={styles.text} />
+                            </Col>
+                        </Row>
+                    </View>
+                    {/* @ts-ignore */}
+                    <View style={[styles.bestChaineResult, { width: styles.app.height * 1.25 }]}>
+                        <Row>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput keyboardType={'number-pad'} onPressOut={() => Keyboard.dismiss()} maxLength={Platform.OS === "ios" ? "2" : null} style={styles.text} />
+                            </Col>
+                        </Row>
+                    </View>
+                    {/* @ts-ignore */}
+                    <View style={[styles.bestZoneResult, { width: styles.app.height * 1.25 }]}>
+                        <Row>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput keyboardType={'number-pad'} onPressOut={() => Keyboard.dismiss()} maxLength={Platform.OS === "ios" ? "2" : null} style={styles.text} />
+                            </Col>
+                        </Row>
+                    </View>
+                    {/* @ts-ignore */}
+                    <View style={[styles.malusZone, { width: styles.app.height * 1.25 }]}>
+                        <Row>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput keyboardType={'number-pad'} onPressOut={() => Keyboard.dismiss()} maxLength={Platform.OS === "ios" ? "2" : null} style={styles.text} />
+                            </Col>
+                        </Row>
+                    </View>
+                    {/* @ts-ignore */}
+                    <View style={[styles.totalResult]}>
+                        <Row>
+                            <Col numRows={2}>
+                                {/* @ts-ignore */}
+                                <TextInput keyboardType={'number-pad'} onPressOut={() => Keyboard.dismiss()} maxLength={Platform.OS === "ios" ? "3" : null} style={[styles.text, { fontSize: 60, textAlign: 'center', textAlignVertical: 'center' }]} />
+                            </Col>
+                        </Row>
+                    </View>
+                </ImageBackground>
+            </TouchableWithoutFeedback>
+        </KeyboardAvoidingView>
     )
 }
 

@@ -22,17 +22,11 @@ export default function EndScreen({navigation}) {
     }
 
 const styles = StyleSheet.create({
-    container: {
-        width: '100%',
-        height: '100%',
-        flex: 1,
-        alignItems: 'center',
-        justifyContent: 'space-around',
-        flexDirection: 'row',
-    },
     image: {
-        flex: 1,
-        justifyContent: "center",
+        flex: 0,
+        alignItems:'flex-start',
+        justifyContent: "flex-end",
+        flexDirection: 'column',
         width: '100%',
         height: '100%',
         transform: [{ translateX: 0 }, { translateY: 0 }]
