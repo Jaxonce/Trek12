@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import HomeScreen from '../screens/HomeScreen';
 import JoinGameScreen from '../screens/JoinGameScreen';
 import CreateGameScreen from '../screens/CreateGameScreen';
+import EndPartie from '../screens/EndPartie';
 
 export default function StartNavigation() {
     const Stack = createStackNavigator();
