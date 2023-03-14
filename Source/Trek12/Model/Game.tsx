@@ -1,4 +1,4 @@
-import ClassicGameMode from "./ClassicGameMode";
+import ClassicGameFactory from "./ClassicGameMode";
 import ClassicOperationManager from "./ClassicOperationManager";
 import GamePlayer from "./GamePlayer";
 import GridTemplate from "./GridTemplate";
@@ -28,7 +28,7 @@ class Game{
             return false 
         }
         
-        this.Players.set(p, new GamePlayer(this.getOperationManager(), this.getGridTemplate))
+        this.Players.set(p, new GamePlayer(this.getOperationManager(), this.getGridTemplate()))
         return true
     }
 

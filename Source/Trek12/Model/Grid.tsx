@@ -29,38 +29,45 @@ class Grid{
         return null
     }
 
-    public CountZones(): Array<[number, number]>{
-        const cells = this.Cells;
-        const template = this.Template.getGraph();
-        const zones: Array<Array<number>> = [];
-      
-        // Tableau pour stocker les cellules appartenant à une zone
-        let zone: Array<number> = [];
-      
-        // Tableau pour stocker les numéros de zone déjà visités
-        let visitedZones: Array<number> = [];
-      
-        // Parcourt toutes les cellules
-        for (const cell of cells) {
-          // Si la cellule est inconnue et n'a pas été visitée
-          if (cell.getType() === Celltype.UNKNOWN && !visitedZones.includes(cell.getValue())) {
-            // Démarre une nouvelle zone avec cette cellule
-            zone = [cell.getId()];
-            visitedZones.push(cell.getValue());
-      
-            // Parcourt toutes les cellules adjacentes à cette cellule
-            for (const adjacentCellId of template.get(cell.getId())) {
-              const adjacentCell = this.findCellById(adjacentCellId);
-              // Si la cellule adjacente a le même numéro et est inconnue
-              if (adjacentCell.getValue() === cell.getValue() && adjacentCell.getType() === Celltype.UNKNOWN) {
-                // Ajoute la cellule à la zone
-                zone.push(adjacentCell.getId());
-              }
+    public CountZones(): Array<[number, number]> {
+      const cells = this.Cells;
+      const template = this.Template.getGraph();
+      const zones: Array<Array<number>> = [];
+    
+      // Tableau pour stocker les cellules appartenant à une zone
+      let zone: Array<number> = [];
+    
+      // Tableau pour stocker les numéros de zone déjà visités
+      let visitedZones: Array<number> = [];
+    
+      // Parcourt toutes les cellules
+      for (const cell of cells) {
+        // Si la cellule est inconnue et n'a pas été visitée
+        if (
+          cell.getType() === Celltype.UNKNOWN &&
+          !visitedZones.includes(cell.getValue())
+        ) {
+          // Démarre une nouvelle zone avec cette cellule
+          zone = [cell.getId()];
+          visitedZones.push(cell.getValue());
+    
+          // Parcourt toutes les cellules adjacentes à cette cellule
+          for (const adjacentCellId of template.get(cell.getId())) {
+            const adjacentCell = this.findCellById(adjacentCellId);
+            // Si la cellule adjacente a le même numéro et est inconnue
+            if (
+              adjacentCell.getValue() === cell.getValue() &&
+              adjacentCell.getType() === Celltype.UNKNOWN
+            ) {
+              // Ajoute la cellule à la zone
+              zone.push(adjacentCell.getId());
             }
-      
-            // Ajoute la zone au tableau de zones
+          }
+    
+          // Si la zone a au moins 2 cellules, l'ajoute au tableau de zones
+          if (zone.length >= 2) {
             zones.push(zone);
-      
+    
             // Modifie le type de chaque cellule de la zone
             for (const zoneCellId of zone) {
               const zoneCell = this.findCellById(zoneCellId);
@@ -75,23 +82,47 @@ class Grid{
             }
           }
         }
-      
-        // Tableau pour stocker le nombre de cellules dans chaque zone
-        const zoneSizes: Array<[number, number]> = [];
-      
-        // Parcourt toutes les zones et détermine la taille de chaque zone
-        for (const z of zones) {
-          zoneSizes.push([cells[z[0]].getValue(), z.length]);
-        }
-      
-        return zoneSizes;
       }
-      
+    
+      // Tableau pour stocker le nombre de cellules dans chaque zone
+      const zoneSizes: Array<[number, number]> = [];
+    
+      // Parcourt toutes les zones et détermine la taille de chaque zone
+      for (const z of zones) {
+        zoneSizes.push([cells[z[0]].getValue(), z.length]);
+      }
+    
+      return zoneSizes;
+    }
+
+    /*
+    public CountChains(): Array<[number, number]>{
+      const cells = this.Cells;
+      const template = this.Template.getGraph();
+      const chains: Array<Array<number>> = [];
+      let actualChain = Array<number>()
+      let actualChainSize = 0
+
+
+      for( const cell of cells ){ // pour toutes les cases
+
+        if(!cell.isEmpty()){  // si elle est pas vide
+          actualChain.push(cell.getId()) // la met dans la liste des valeurs de la chaîne actuelle
+          for(const adjacent of template.get(cell.getId())){
+            if((adjacent == cell.getId()+1 || adjacent== cell.getId()-1) && (!actualChain.includes(adjacent)) ){
+
+            }
+          }
+        }
+      }
+    }
+    */
 
 
       public getCells(): Cell[]{
         return this.Cells
     }
+    
 
     public getTemplate(): GridTemplate{
         return this.Template
