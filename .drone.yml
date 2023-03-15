@@ -6,6 +6,7 @@ steps:
   - name: sonar-analyses
     image: hub.codefirst.iut.uca.fr/maxence.lanone/drone-sonarplugin-reactnative:latest
     commands:
+      - cd Source
       - ls -l
       - sonar-scanner -Dsonar.projectKey=Trek12 -Dsonar.sources=. -Dsonar.host.url=https://codefirst.iut.uca.fr/sonar -Dsonar.login=$${PLUGIN_SONAR_TOKEN}
     secret: [ SECRET_SONAR_LOGIN ]
