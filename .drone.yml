@@ -4,12 +4,14 @@ name: default
 
 steps:
   - name: sonar-analyses
-    image: hub.codefirst.iut.uca.fr/maxence.lanone/drone-sonarplugin-reactnative:latest
+    image: hub.codefirst.iut.uca.fr/camille.petitalot/drone-sonarplugin-reactnative:latest
     commands:
-      - cd Source
-      - ls -l
-      - sonar-scanner -Dsonar.projectKey=Trek12 -Dsonar.sources=. -Dsonar.host.url=https://codefirst.iut.uca.fr/sonar -Dsonar.login=$${PLUGIN_SONAR_TOKEN}
-    secret: [ SECRET_SONAR_LOGIN ]
+      - cd Source/Trek12
+      - npm install
+      - sonar-scanner -X -Dsonar.projectKey=Trek12_toto -Dsonar.sources=. -Dsonar.host.url=$${PLUGIN_SONAR_HOST} 
+        -Dsonar.login=squ_ffb2ad2b21b57a60523bea9a4a58891c97c09f14
+
+    secrets: [ SECRET_SONAR_LOGIN ]
     settings:
       sonar_host: https://codefirst.iut.uca.fr/sonar/
       sonar_token:
