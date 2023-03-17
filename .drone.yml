@@ -8,7 +8,7 @@ steps:
     commands:
       - cd Source/Trek12
       - npm install
-      - sonar-scanner -X -Dsonar.projectKey=Trek12 -Dsonar.sources=. -Dsonar.host.url=$${PLUGIN_SONAR_HOST} 
+      - sonar-scanner -X -Dsonar.projectKey=Trek12_1 -Dsonar.sources=. -Dsonar.host.url=$${PLUGIN_SONAR_HOST} 
         -Dsonar.login=sqp_bb5fa46dbc811c1bc40630985b9ece8123a6bf3f
 
     secrets: [ SECRET_SONAR_LOGIN ]
