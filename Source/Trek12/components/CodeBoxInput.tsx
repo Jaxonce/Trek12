@@ -3,6 +3,8 @@ import { View, Text, StyleSheet, TextInput } from "react-native";
 
 type CodeBoxProps = {
     text: string;
+    setInputCode?: (text: string) => void;
+    error: boolean;
     style?: any;
     width?: number;
     height?: number;

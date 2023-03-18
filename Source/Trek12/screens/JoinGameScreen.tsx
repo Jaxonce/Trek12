@@ -6,6 +6,12 @@ import ButtonBack from '../components/ButtonBack';
 
 export default function JoinGameScreen({navigation}) {
     const backToHome = () => {navigation.navigate("HomeScreen")}
+
+    const [inputCode, setInputCode] = React.useState('');
+    const [error, setError] = React.useState(false);
+
+    const goToGameModeScreen = () => {navigation.navigate("GameModeScreen")}
+
     return (
         <ScrollView 
             keyboardShouldPersistTaps="handled" // ajout de la propriété keyboardShouldPersistTaps
@@ -21,8 +27,8 @@ export default function JoinGameScreen({navigation}) {
             <View style={styles.ButtonBack}>
                 <ButtonBack onPress={()=>backToHome()}></ButtonBack>
             </View>
-            <CodeBoxInput text="Rentrer le code"/>
-            <ButtonOk/>
+            <CodeBoxInput text="Rentrer le code" setInputCode={setInputCode} error={error}/>
+            <ButtonOk text="OK" onPress={goToGameModeScreen}/>
         </ScrollView>
     );
     }

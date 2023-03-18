@@ -7,7 +7,7 @@ export default function DiceButton({backgroundColor, number, top, left}) {
 
     useEffect(() => {
         const interval = setInterval(() => {
-            const newNumber = backgroundColor === "yellow" ? Math.round(Math.random() * 5) : Math.round(Math.random() * 5) + 1;
+            const newNumber = backgroundColor === "#F4D34C" ? Math.round(Math.random() * 5) : Math.round(Math.random() * 5) + 1;
             setDiceNumber(newNumber);
         }, 1000); // génère un nouveau chiffre toutes les 1 secondes
 

@@ -15,14 +15,6 @@ export default function HomeScreen({ navigation }) {
 
     const [scrollEnabled, setScrollEnabled] = useState(false);
 
-    const handleFocus = () => {
-        setScrollEnabled(true);
-    };
-
-    const handleBlur = () => {
-        setScrollEnabled(false);
-    };
-
     return (
         <ImageBackground source={require('../assets/bg.png')} resizeMode="cover" style={styles.image}>
             <ScrollView
@@ -42,7 +34,6 @@ export default function HomeScreen({ navigation }) {
                 </KeyboardAvoidingView>
             </ScrollView>
         </ImageBackground>
-
     );
 }
 

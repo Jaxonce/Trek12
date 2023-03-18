@@ -11,8 +11,8 @@ export default function GameScreen({navigation}) {
         <ImageBackground source={require(".././assets/bg_game.png")} style={styles.backgroundImage}>
             <Text style={{fontFamily: "Sketch", fontSize: 30, top: 15, left: 340}}>{turn[0]}</Text>
             <PauseButton navigation={navigation}></PauseButton>
-            <DiceButton backgroundColor="yellow" number="0" top="-7%" left="50%"/>
-            <DiceButton backgroundColor="red" number="1" top="-23%" left="58%"/>
+            <DiceButton backgroundColor="#F4D34C" number="0" top="-7%" left="50%"/>
+            <DiceButton backgroundColor="#B45746" number="1" top="-23%" left="58%"/>
             <View style={styles.container1}>
                  <Text style={styles.text}>1</Text>
             </View>
@@ -23,22 +23,22 @@ export default function GameScreen({navigation}) {
                 <Text style={styles.text}>3</Text>
             </View>
             <View style={styles.container4}>
-                <Text style={styles.text}>4</Text>
+                <Text style={styles.text}></Text>
             </View>
             <View style={styles.container5}>
-                <Text style={styles.text}>5</Text>
+                <Text style={styles.text}></Text>
             </View>
             <View style={styles.container6}>
-                <Text style={styles.text}>6</Text>
+                <Text style={styles.text}>5</Text>
             </View>
             <View style={styles.container7}>
-                <Text style={styles.text}>7</Text>
+                <Text style={styles.text}>4</Text>
             </View>
             <View style={styles.container8}>
-                <Text style={styles.text}>8</Text>
+                <Text style={styles.text}>9</Text>
             </View>
             <View style={styles.container9}>
-                <Text style={styles.text}>9</Text>
+                <Text style={styles.text}>8</Text>
             </View>
             <View style={styles.container10}>
                 <Text style={styles.text}>10</Text>
