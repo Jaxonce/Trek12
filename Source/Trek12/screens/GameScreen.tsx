@@ -1,78 +1,114 @@
-import React, {useRef, useEffect} from 'react';
-import { Text, View, StyleSheet, Dimensions, ImageBackground } from 'react-native';
+import React, {useRef, useEffect, useState} from 'react';
+import { Text, View, StyleSheet, Dimensions, ImageBackground, TouchableOpacity } from 'react-native';
 import PauseButton from '../components/PauseButton';
 import DiceButton from '../components/DiceButton';
+import { StatusBar } from 'expo-status-bar';
 
 
 export default function GameScreen({navigation}) {
+    const diceValue = 12
+    const [cases, setCases] = useState(Array(19).fill('X'));
+    const containers = [  ["-31%", "18.3%"],
+    ["-36%", "12.3%"],
+    ["-32%", "13.7%"],
+    ["-31%", "9.5%"],
+    ["-27%", "11.5%"],
+    ["-45%", "15.5%"],
+    ["-63%", "19.5%"],
+    ["-59.5%", "21.3%"],
+    ["-58%", "17.5%"],
+    ["-86%", "24.7%"],
+    ["-103%", "29.5%"],
+    ["-91%", "26.3%"],
+    ["-90%", "22.5%"],
+    ["-96%", "28.2%"],
+    ["-114%", "32.1%"],
+    ["-132.5%", "35.7%"],
+    ["-129.3%", "38%"],
+    ["-148.3%", "41.5%"],
+    ["-152%", "47.1%"]
+];
+
+    const [mode, setMode] = useState('zone');
+    const [zoneNumbers, setZoneNumbers] = useState([]);
+    const [chainNumbers, setChainNumbers] = useState([]);
     const turn = ["1/19", "2/19", "3/19", "4/19", "5/19", "6/19", "7/19", "8/19", "9/19", "10/19", "11/19", "12/19", "13/19", "14/19", "15/19", "16/19", "17/19", "18/19", "19/19"]
 
+    const handlePressNumber = (value, index) => {
+        if(value === "X"){
+            //verif si à coté
+            setCases(prevCases => {
+                const newCases = prevCases.slice();
+                newCases.splice(index, 1, diceValue); 
+                return newCases;
+              });
+              //appeler nouveau tour
+        }
+        if (!zoneNumbers.find(zone => zone === value) && !chainNumbers.find(chain => chain === value) && value !== "X"){
+            if (mode === 'zone') {
+                //vérif si zone possible
+          setZoneNumbers([...zoneNumbers, [index,value]]);
+            } else if (mode === 'chain') {
+                //verif si chaine possible
+            setChainNumbers([...chainNumbers, [index,value]]);
+            }
+        }
+      };
+
+      const styleHandlePressNumber = (value,index) => {
+        if(value !== 'X'){
+            if(zoneNumbers.find((arr) => arr[0] === index && arr[1] === value)){
+            return styles.zoneNumber
+            }
+            if(chainNumbers.find((arr) => arr[0] === index && arr[1] === value)){
+                return styles.chainNumber
+            }
+        }
+        if(value === 'X'){
+            return styles.textX
+        }
+        return styles.text
+      }
+
+
+      const styleContainer = (number) => {
+        return stylesContainer(containers[number][0],containers[number][1]).container1
+      }
+  
     return (
+        <>
         <ImageBackground source={require(".././assets/bg_game.png")} style={styles.backgroundImage}>
-            <Text style={{fontFamily: "Sketch", fontSize: 30, top: 15, left: 340}}>{turn[0]}</Text>
-            <PauseButton navigation={navigation}></PauseButton>
-            <DiceButton backgroundColor="#F4D34C" number="0" top="-7%" left="50%"/>
-            <DiceButton backgroundColor="#B45746" number="1" top="-23%" left="58%"/>
-            <View style={styles.container1}>
-                 <Text style={styles.text}>1</Text>
+                <Text style={{fontFamily: "Sketch", fontSize: 30, top: 15, left: 340}}>{turn[0]}</Text>
+            <PauseButton navigation={navigation}></PauseButton>      
+            <DiceButton backgroundColor="#F4D34C" number="0" top="-7%" left="54%"/>
+            <DiceButton backgroundColor="#B45746" number="1" top="-23%" left="62%"/>
+            <TouchableOpacity style={styles.containerZoneChain} onPress={() => setMode(mode === 'zone' ? 'chain' : 'zone')}>
+                    <Text style={mode === 'zone' ? styles.zoneNumber : styles.chainNumber}>{mode === 'zone' ? 'Zone' : 'Chain'}</Text>
+            </TouchableOpacity>
+            <StatusBar hidden={true}></StatusBar>
+            
+            {cases.map((value, index) => (
+            <View key={index} style={styleContainer(index)}>
+                <TouchableOpacity onPress={() => handlePressNumber(value, index)}>
+                    <Text style={styleHandlePressNumber(value,index)}>{value}</Text>
+                </TouchableOpacity>
             </View>
-            <View style={styles.container2}>
-                <Text style={styles.text}>2</Text>
-            </View>
-            <View style={styles.container3}>
-                <Text style={styles.text}>3</Text>
-            </View>
-            <View style={styles.container4}>
-                <Text style={styles.text}></Text>
-            </View>
-            <View style={styles.container5}>
-                <Text style={styles.text}></Text>
-            </View>
-            <View style={styles.container6}>
-                <Text style={styles.text}>5</Text>
-            </View>
-            <View style={styles.container7}>
-                <Text style={styles.text}>4</Text>
-            </View>
-            <View style={styles.container8}>
-                <Text style={styles.text}>9</Text>
-            </View>
-            <View style={styles.container9}>
-                <Text style={styles.text}>8</Text>
-            </View>
-            <View style={styles.container10}>
-                <Text style={styles.text}>10</Text>
-            </View>
-            <View style={styles.container11}>
-                <Text style={styles.text}>11</Text>
-            </View>
-            <View style={styles.container12}>
-                <Text style={styles.text}>12</Text>
-            </View>
-            <View style={styles.container13}>
-                <Text style={styles.text}>13</Text>
-            </View>
-            <View style={styles.container14}>
-                <Text style={styles.text}>14</Text>
-            </View>
-            <View style={styles.container15}>
-                <Text style={styles.text}>15</Text>
-            </View>
-            <View style={styles.container16}>
-                <Text style={styles.text}>16</Text>
-            </View>
-            <View style={styles.container17}>
-                <Text style={styles.text}>17</Text>
-            </View>
-            <View style={styles.container18}>
-                <Text style={styles.text}>18</Text>
-            </View>
-            <View style={styles.container19}>
-                <Text style={styles.text}>19</Text>
-            </View>
+                ))}
+            
         </ImageBackground>
+        </>
+        
     );
 }
+
+const stylesContainer = (top, left) => StyleSheet.create({
+    container1: {
+        left: left,
+        top: top,
+        position: "relative",
+        width : "10%"
+    },
+  });
 
 const styles = StyleSheet.create({
     backgroundImage: {
@@ -80,105 +116,31 @@ const styles = StyleSheet.create({
     position: "relative",
     transform:[{translateX: 0}, {translateY: 0}]
     },
-    container1: {
-        position: "relative",
-        left: "18.3%",
-        top:"-31%",
-    },
-    container2: {
-        position: "relative",
-        left: "12.3%",
-        top: "-36%",
-    },
-    container3: {
-        position: "relative",
-        left: "13.7%",
-        top:"-32%"
-    },
-    container4: {
-        position: "relative",
-        left: "9.5%",
-        top: "-31%"
-    },
-    container5: {
-        position: "relative",
-        left: "11.5%",
-        top: "-27%"
-    },
-    container6: {
-        position: "relative",
-        left: "15.5%",
-        top: "-45%"
-    },
-    container7: {
-        position: "relative",
-        left: "19.5%",
-        top: "-63%"
-    },
-    container8: {
-        position: "relative",
-        left: "21.3%",
-        top: "-59.5%"
-    },
-    container9: {
-        position: "relative",
-        left: "17.5%",
-        top: "-58%"
-    },
-    container10: {
-        position: "relative",
-        left: "24.7%",
-        top: "-86%"
-    },
-    container11: {
-        position: "relative",
-        left: "29.5%",
-        top: "-103%"
-    },
-    container12: {
-        position: "relative",
-        left: "26.3%",
-        top: "-91%"
-    },
-    container13: {
-        position: "relative",
-        left: "22.5%",
-        top: "-90%"
-    },
-    container14: {
-        position: "relative",
-        left: "28.2%",
-        top: "-96%"
-    },
-    container15: {
-        position: "relative",
-        left: "32.1%",
-        top: "-114%"
-    },
-    container16: {
-        position: "relative",
-        left: "35.7%",
-        top: "-132.5%"
-    },
-    container17: {
-        position: "relative",
-        left: "38%",
-        top: "-129.3%"
-    },
-    container18: {
-        position: "relative",
-        left: "41.5%",
-        top: "-148.3%"
-    },
-    container19: {
-        position: "relative",
-        left: "47.1%",
-        top: "-152%"
-    },
-      text: {
+    zoneNumber: {
+        color: "blue",
         fontSize: parseFloat('200') / 100 * 16,
         fontFamily: "Sketch"
-      }
+    },
+    chainNumber: {
+        color: "green",
+        fontSize: parseFloat('200') / 100 * 16,
+        fontFamily: "Sketch"
+    },
+    text: {
+        fontSize: parseFloat('200') / 100 * 16,
+        fontFamily: "Sketch"
+    },
+    textX: {
+        fontSize: parseFloat('200') / 100 * 16,
+        fontFamily: "Sketch",
+        // opacity: 0
+    },
+    containerZoneChain: {
+        top:"5%",
+        left: "56%",
+        width: "15%"
+
+    }
 });
 
 
