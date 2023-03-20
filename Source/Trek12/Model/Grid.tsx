@@ -95,28 +95,37 @@ class Grid{
       return zoneSizes;
     }
 
-    /*
-    public CountChains(): Array<[number, number]>{
-      const cells = this.Cells;
-      const template = this.Template.getGraph();
-      const chains: Array<Array<number>> = [];
-      let actualChain = Array<number>()
-      let actualChainSize = 0
+    
+    // public CountChains(): Array<[number, number]>{
+    //   const cells = this.Cells;
+    //   const template = this.Template.getGraph();
+    //   const chains: Array<Array<number>> = [];
+    //   let actualChain = Array<number>()
+    //   let actualChainSize = 0
 
 
-      for( const cell of cells ){ // pour toutes les cases
+    //   for( const cell of cells ){ // pour toutes les cases
 
-        if(!cell.isEmpty()){  // si elle est pas vide
-          actualChain.push(cell.getId()) // la met dans la liste des valeurs de la chaîne actuelle
-          for(const adjacent of template.get(cell.getId())){
-            if((adjacent == cell.getId()+1 || adjacent== cell.getId()-1) && (!actualChain.includes(adjacent)) ){
+    //     // Si la cellule est inconnue et n'a pas été visitée
+    //     if (
+    //       cell.getType() === Celltype.UNKNOWN &&
+    //       !visitedZones.includes(cell.getValue())
+    //     ) {
+    //       // Démarre une nouvelle zone avec cette cellule
+    //       zone = [cell.getId()];
+    //       visitedZones.push(cell.getValue());
 
-            }
-          }
-        }
-      }
-    }
-    */
+    //     if(!cell.isEmpty()){  // si elle est pas vide
+    //       actualChain.push(cell.getId()) // la met dans la liste des valeurs de la chaîne actuelle
+    //       for(const adjacent of template.get(cell.getId())){ // pour toutes les cases adjacentes a la case cell.getId()
+    //         if((adjacent == cell.getId()+1 || adjacent== cell.getId()-1) && (!actualChain.includes(adjacent))  ){ // si la case adjacente est à coté de la case cell.getId() et qu'elle n'est pas déjà dans la liste des valeurs de la chaîne actuelle
+    //           actualChain.push(adjacent) // la met dans la liste des valeurs de la chaîne actuelle
+    //         }
+    //       }
+    //     }
+    //   }
+    // }
+    
 
 
       public getCells(): Cell[]{

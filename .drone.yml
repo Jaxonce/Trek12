@@ -3,18 +3,16 @@ type: docker
 name: default
 
 steps:
-  - name: install-dependencies
-    image: node:14-alpine
+  - name: sonar-analyses
+    image: hub.codefirst.iut.uca.fr/camille.petitalot/drone-sonarplugin-reactnative:latest
     commands:
-      - apk add --no-cache bash
-      - npm ci
+      - cd Source/Trek12
+      - npm install
+      - sonar-scanner -X -Dsonar.projectKey=Trek12 -Dsonar.sources=. -Dsonar.host.url=$${PLUGIN_SONAR_HOST} 
+        -Dsonar.login=sqp_cfb8f45ecad5a399cb45e9fcb01cb41e3a222bdd
 
-  - name: build
-    image: node:14-alpine
-    commands:
-      - npm run build
-
-  - name: test
-    image: node:14-alpine
-    commands:
-      - npm run test
+    secrets: [ SECRET_SONAR_LOGIN ]
+    settings:
+      sonar_host: https://codefirst.iut.uca.fr/sonar/
+      sonar_token:
+        from_secret: SECRET_SONAR_LOGIN
