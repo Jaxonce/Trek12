@@ -26,10 +26,6 @@ export default function ButtonNav(props: ButtonNavProps){
     );
 };
 
-function onPress() {
-  
-}
-
 const styles = StyleSheet.create({
     bigButton: {
         width: 265,

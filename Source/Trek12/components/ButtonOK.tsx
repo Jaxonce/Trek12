@@ -1,8 +1,12 @@
 import * as React from "react";
 import { Text, View, StyleSheet, ImageBackground, Pressable } from "react-native";
 
+type ButtonOkProps = {
+  text: string
+  onPress: any;
+}
 
-export default function ButtonOK () {
+export default function ButtonOK (props: ButtonOkProps) {
   return (
     <View>
         <Pressable style={({ pressed }) => [
@@ -15,7 +19,7 @@ export default function ButtonOK () {
             styles.button,
           ]}>
             <ImageBackground source={require('../assets/bg_wood.jpg')} imageStyle={{ borderRadius: 22}} resizeMode="cover" style={styles.background}>
-               <Text style={styles.ok}>OK</Text>
+               <Text style={styles.ok}>{props.text}</Text>
             </ImageBackground>
         </Pressable>
     </View>
@@ -38,6 +42,7 @@ const styles = StyleSheet.create({
         fontSize: 30,
         fontWeight: 'bold',
         textAlign: 'center',
+        marginTop: 5,
         fontFamily: 'Sketch',
     },
     background: {
@@ -47,4 +52,3 @@ const styles = StyleSheet.create({
         borderRadius: 22
     }
 });
-
