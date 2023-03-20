@@ -6,10 +6,15 @@ steps:
   - name: sonar-analyses
     image: hub.codefirst.iut.uca.fr/maxence.lanone/drone-sonarplugin-reactnative:latest
     commands:
-      - ls -l 
-      - sonar-scanner -Dsonar.projectKey=Trek12 -Dsonar.sources=. -Dsonar.host.url=https://codefirst.iut.uca.fr/sonar -Dsonar.login=$${PLUGIN_SONAR_TOKEN}
-    secret: [ SECRET_SONAR_LOGIN ]
-    settings:
-      sonar_host: https://codefirst.iut.uca.fr/sonar/
-      sonar_token:
-        from_secret: SECRET_SONAR_LOGIN
+      - apk add --no-cache bash
+      - npm ci
+
+  - name: build
+    image: node:14-alpine
+    commands:
+      - npm run build
+
+  - name: test
+    image: node:14-alpine
+    commands:
+      - npm run test
