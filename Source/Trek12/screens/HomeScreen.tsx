@@ -23,7 +23,7 @@ export default function HomeScreen({ navigation }) {
                 contentContainerStyle={styles.scrollView}
             >
                 <KeyboardAvoidingView
-                    behavior={Platform.OS === "ios" ? "padding" : null}
+                    behavior={Platform.OS === "ios" ? "padding" : "height"}
                     keyboardVerticalOffset={Platform.OS === "ios" ? 5 : 0}
                 >
                     <View style={styles.container}>
