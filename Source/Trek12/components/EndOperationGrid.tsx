@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { View, Text, ImageBackground, Image, Dimensions, TextInput, Keyboard, KeyboardAvoidingView, Platform, TouchableWithoutFeedback } from 'react-native';
-import KeyboardAwareScrollView from 'react-native-keyboard-aware-scroll-view';
+import { View,ImageBackground, Dimensions, TextInput, Keyboard, KeyboardAvoidingView, Platform, TouchableWithoutFeedback } from 'react-native';
 
 // Styles
 const styles = {

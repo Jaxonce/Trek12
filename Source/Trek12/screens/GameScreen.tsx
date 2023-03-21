@@ -1,5 +1,5 @@
-import React, {useRef, useEffect, useState} from 'react';
-import { Text, View, StyleSheet, Dimensions, ImageBackground, TouchableOpacity } from 'react-native';
+import React, {useState} from 'react';
+import { Text, View, StyleSheet, ImageBackground, TouchableOpacity } from 'react-native';
 import PauseButton from '../components/PauseButton';
 import DiceButton from '../components/DiceButton';
 import { StatusBar } from 'expo-status-bar';

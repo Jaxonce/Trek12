@@ -1,6 +1,5 @@
 import * as React from "react";
-import { View, Text, StyleSheet, Button, Pressable } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { Text, StyleSheet,Pressable } from "react-native";
 
 
 //buttonNav props

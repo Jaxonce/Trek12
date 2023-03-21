@@ -1,12 +1,7 @@
 import React, { useState } from 'react';
-import { TextInput, View, StyleSheet, ImageBackground, Touchable, ScrollView, KeyboardAvoidingView, Platform, Button } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
+import { View, StyleSheet, ImageBackground, ScrollView, KeyboardAvoidingView, Platform } from 'react-native';
 import ButtonNav from '../components/ButtonNav';
 import InputBox from '../components/InputBox';
-import { useNavigation } from '@react-navigation/native';
-import StartNavigation from '../components/StartNavigation';
-import JoinGameScreen from './JoinGameScreen';
-
 
 
 export default function HomeScreen({ navigation }) {

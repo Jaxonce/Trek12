@@ -1,5 +1,5 @@
 import * as React from "react";
-import { View, Text, StyleSheet, Button, Pressable, Image, ImageBackground } from "react-native";
+import { Text, StyleSheet,Pressable } from "react-native";
 
 type ButtonMenuProps = {
     text: string;
