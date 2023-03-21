@@ -36,8 +36,9 @@ class Game{
 
     public rollDice(min: number, max: number): number{
         const PossibleValues = max - min + 1;
-
-        const RandomNumber = Math.floor(Math.random() * PossibleValues) + min;
+        const crypto = window.crypto;
+        var array;
+        const RandomNumber = Math.floor(crypto.getRandomValues(array) * PossibleValues) + min;
         return RandomNumber;
     }
 
