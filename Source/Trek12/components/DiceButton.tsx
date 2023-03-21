@@ -8,7 +8,7 @@ export default function DiceButton({ backgroundColor, number, top, left }) {
     useEffect(() => {
         const interval = setInterval(() => {
             const crypto = window.crypto;
-            var array;
+            let array;
             const newNumber = backgroundColor === "#F4D34C" ? Math.round(crypto.getRandomValues(array) * 5) : Math.round(crypto.getRandomValues(array) * 5) + 1;
             setDiceNumber(newNumber);
         }, 1000); // génère un nouveau chiffre toutes les 1 secondes

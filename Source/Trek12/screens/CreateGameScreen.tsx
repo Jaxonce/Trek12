@@ -19,7 +19,7 @@ export default function CreateGameScreen({navigation}) {
         const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
         const charactersLength = characters.length;
         const crypto = window.crypto;
-        var array; 
+        let array; 
         for (let i = 0; i < length; i++) {
           result += characters.charAt(Math.floor(crypto.getRandomValues(array) * charactersLength));
         }
