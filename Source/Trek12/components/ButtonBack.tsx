@@ -1,6 +1,5 @@
 import * as React from "react";
-import { View, Text, StyleSheet, Button, Pressable, Image, ImageBackground } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { StyleSheet, Pressable, Image, ImageBackground } from "react-native";
 
 
 //buttonNav props
@@ -58,5 +57,6 @@ const styles = StyleSheet.create({
         top:20,
     }
 });
+
 
 

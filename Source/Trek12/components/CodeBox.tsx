@@ -1,8 +1,9 @@
 import * as React from "react";
-import { View, Text, StyleSheet, TextInput } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 
 type CodeBoxProps = {
     text: string;
+    code: string;
     style?: any;
     width?: number;
     height?: number;
@@ -13,7 +14,7 @@ export default function CodeBox(props: CodeBoxProps){
     <View style={styles.vueInput}>
         <Text style={styles.textLabel}>{props.text}</Text>
         <View style={styles.inputBox}>
-            <Text style={styles.text}>6GV25S</Text>
+            <Text style={styles.text}>{props.code}</Text>
         </View>
     </View>
         
