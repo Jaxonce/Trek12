@@ -1,5 +1,3 @@
-import Cell from "./Cell";
-
 abstract class GridTemplate{
     private graph: Map<number, Array<number>>
 

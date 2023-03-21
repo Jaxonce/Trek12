@@ -1,4 +1,3 @@
-import Cell from "./Cell"
 import Grid from "./Grid"
 import GridTemplate from "./GridTemplate"
 import OperationManager from "./OperationManager"
@@ -25,10 +24,10 @@ class GamePlayer{
         }
     }
 
-    public calculateScore(): score{
-        // Count Chains
-        this.getGrid().getCells().forEach(cell => )
-    }
+    // public calculateScore(): score{
+    //     // Count Chains
+    //     this.getGrid().getCells().forEach(cell => )
+    // }
 
     public setScore(s: number): void{
         this.Score = s

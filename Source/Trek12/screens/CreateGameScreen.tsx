@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, StyleSheet, ImageBackground, Button } from 'react-native';
+import { View, StyleSheet, ImageBackground} from 'react-native';
 import ButtonBack from '../components/ButtonBack';
 import ButtonOK from '../components/ButtonOK';
 import CodeBox from '../components/CodeBox';

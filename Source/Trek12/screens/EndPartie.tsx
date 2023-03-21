@@ -1,11 +1,5 @@
 import * as React from 'react';
-import { Text, View, StyleSheet, ImageBackground, Touchable } from 'react-native';
-import { TouchableOpacity } from 'react-native-gesture-handler';
-import ButtonNav from '../components/ButtonNav';
-import InputBox from '../components/InputBox';
-import { useNavigation } from '@react-navigation/native';
-import StartNavigation from '../components/StartNavigation';
-import JoinGameScreen from './JoinGameScreen';
+import { StyleSheet, ImageBackground} from 'react-native';
 import EndOperation from '../components/EndOperationGrid';
 
 

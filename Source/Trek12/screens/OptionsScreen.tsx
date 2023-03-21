@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Text, View, StyleSheet, SafeAreaView, Image, ImageBackground } from 'react-native';
+import { View, StyleSheet, ImageBackground } from 'react-native';
 import HelpCalculationButton from '../components/HelpCalculationButton';
 import ButtonMenu from '../components/ButtonMenu';
 

@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import { Text, View, StyleSheet, SafeAreaView, Image, ImageBackground } from 'react-native';
 import { RadioButton } from 'react-native-paper';
 
 export default function HelpCalculationButton({options, defaultValue, onSelect}) {

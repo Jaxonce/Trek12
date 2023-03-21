@@ -1,5 +1,5 @@
-import React, {useRef, useEffect} from 'react';
-import { Text, View, StyleSheet, SafeAreaView, Image, ImageBackground } from 'react-native';
+import React from 'react';
+import { View, StyleSheet, ImageBackground } from 'react-native';
 import ButtonMenu from '../components/ButtonMenu';
 
 export default function PauseScreen({navigation}) {

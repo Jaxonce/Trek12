@@ -1,4 +1,3 @@
-import Cell from "./Cell";
 import GridTemplate from "./GridTemplate";
 
 class ClassicTemplate extends GridTemplate{

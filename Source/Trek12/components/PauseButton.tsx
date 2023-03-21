@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import { Text, View, StyleSheet, ImageBackground, Pressable, Image } from 'react-native';
+import React from 'react';
+import { View, StyleSheet, ImageBackground, Pressable, Image } from 'react-native';
 
 export default function PauseButton({navigation : {navigate}}) {
     return (

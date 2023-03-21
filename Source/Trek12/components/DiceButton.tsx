@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Text, View, StyleSheet, ImageBackground, Pressable, Image } from 'react-native';
+import { Text,StyleSheet, ImageBackground} from 'react-native';
 
 export default function DiceButton({backgroundColor, number, top, left}) {
 
