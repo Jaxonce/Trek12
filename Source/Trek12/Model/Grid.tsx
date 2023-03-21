@@ -106,7 +106,6 @@ class Grid {
   }
 
   public CalculAndFindScoreChaine(listedid: Array<number>): number { //1ere liste : id des cellules de la zone, 2eme liste : id des cellules de la chaine
-    let score = 0;
     const cells = [];
     const template = this.Template.getGraph();
     const valueChaineTrie = [];
@@ -120,24 +119,49 @@ class Grid {
         return -1;
       }
     }
-    for(const cell of cells){
-      if(cell.getType() == Celltype.CHAIN || cell.getType() == Celltype.BOTH){
-        return -1; 
+    for (const cell of cells) {
+      if (cell.getType() == Celltype.CHAIN || cell.getType() == Celltype.BOTH) {
+        return -1;
       }
     }
-    for(const cell of cells){
-      if(cell.getType() == Celltype.ZONE){
-        cell.setType(Celltype.BOTH); 
-      } else if (cell.getType() == Celltype.UNKNOWN){
+    for (const cell of cells) {
+      if (cell.getType() == Celltype.ZONE) {
+        cell.setType(Celltype.BOTH);
+      } else if (cell.getType() == Celltype.UNKNOWN) {
         cell.setType(Celltype.CHAIN);
       }
     }
-    return Math.max(...valueChaineTrie) + (valueChaineTrie.length-1);
+    return Math.max(...valueChaineTrie) + (valueChaineTrie.length - 1);
   }
 
-  // public CalculAndFindScoreZone(listeId: Array<number>) :number{
+  public CalculAndFindScoreZone(listeId: Array<number>): number {
+    const cells = [];
+    const template = this.Template.getGraph();
+    const valueZone = [];
+    for (const cell of listeId) {
+      valueZone.push(this.getCellValue(cell));
+      cells.push(this.findCellById(cell));
+    }
+    for (let i = 1; i < valueZone.length; i++) {
+      if (!(valueZone[i] == valueZone[i - 1]) || !(listeId[i] in template.get(listeId[i - 1]))) {
+        return -1;
+      }
+    }
+    for (const cell of cells) {
+      if (cell.getType() == Celltype.ZONE || cell.getType() == Celltype.BOTH) {
+        return -1;
+      }
+    }
+    for (const cell of cells) {
+      if (cell.getType() == Celltype.CHAIN) {
+        cell.setType(Celltype.BOTH);
+      } else if (cell.getType() == Celltype.UNKNOWN) {
+        cell.setType(Celltype.ZONE);
+      }
+    }
+    return valueZone[0] + (valueZone.length - 1);
+  }
 
-  // }
 
 
 
