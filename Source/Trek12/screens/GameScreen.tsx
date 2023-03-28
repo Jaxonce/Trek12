@@ -3,6 +3,8 @@ import { Text, View, StyleSheet, Dimensions, ImageBackground, TouchableOpacity }
 import PauseButton from '../components/PauseButton';
 import DiceButton from '../components/DiceButton';
 import { StatusBar } from 'expo-status-bar';
+import EndOperationGrid from '../components/EndOperationGrid'
+import HelpCalculationButton from '../components/HelpCalculationButton'
 
 
 export default function GameScreen({navigation}) {
@@ -78,6 +80,11 @@ export default function GameScreen({navigation}) {
     return (
         <>
         <ImageBackground source={require(".././assets/bg_game.png")} style={styles.backgroundImage}>
+            {/* <View style={{zIndex:10}}>
+                <EndOperationGrid></EndOperationGrid>
+                
+            </View> */}
+            
                 <Text style={{fontFamily: "Sketch", fontSize: 30, top: 15, left: 340}}>{turn[0]}</Text>
             <PauseButton navigation={navigation}></PauseButton>      
             <DiceButton backgroundColor="#F4D34C" number="0" top="-7%" left="54%"/>

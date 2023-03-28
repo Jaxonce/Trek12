@@ -16,7 +16,7 @@ export default function HelpCalculationButton({options, defaultValue, onSelect})
       };
 
   return (
-    <RadioButton.Group
+      <RadioButton.Group
       onValueChange={handleValueChange}
       value={selectedValue}
     >
@@ -31,5 +31,6 @@ export default function HelpCalculationButton({options, defaultValue, onSelect})
         />
       ))}
     </RadioButton.Group>
+    
   );
 }

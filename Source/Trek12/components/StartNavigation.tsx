@@ -14,7 +14,7 @@ export default function StartNavigation() {
     const Stack = createStackNavigator();
     return (
       <NavigationContainer>
-        <Stack.Navigator initialRouteName="GameModeScreen">
+        <Stack.Navigator initialRouteName="GameScreen">
           <Stack.Screen 
             name="GameScreen" 
             component={GameScreen}
