@@ -1,8 +1,8 @@
 import ClassicGameFactory from "../../Model/ClassicGameFactory";
 
-export const CreateClassicGameFactory = (classicGameFactory: ClassicGameFactory) => {
+export const GetGameFactory = (classicGameFactory: ClassicGameFactory) => {
     return {
-        type: "CREATE_GAMEFACTORY",
+        type: "CURRENT_GAMEFACTORY",
         payload: classicGameFactory,
     };
 }

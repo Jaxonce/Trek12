@@ -1,4 +1,4 @@
-import ClassicGameFactory from "./ClassicGameMode";
+import ClassicGameFactory from "./ClassicGameFactory";
 import ClassicOperationManager from "./ClassicOperationManager";
 import GamePlayer from "./GamePlayer";
 import GridTemplate from "./GridTemplate";
