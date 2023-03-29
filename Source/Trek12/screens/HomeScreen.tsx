@@ -24,7 +24,7 @@ export default function HomeScreen({ navigation }) {
     useEffect(() => {
         const loadPlayer = async () => {
             //@ts-ignore
-            await dispatch(getPlayer())
+            await dispatch(getPlayer(player))
         }
         loadPlayer()
     }, [dispatch])
