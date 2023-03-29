@@ -26,11 +26,14 @@ export const getGame = () => {
     return async (dispatch, getState) => {
         try {
             const gameFactory: GameFactory = getState().appReducer.current_gamefactory
-            const operationManager = new ClassicOperationManager
-            const gridTemplate = new ClassicTemplate
-            const maxTurns = 19
-            const game = gameFactory.initialize(operationManager, gridTemplate, maxTurns)
-            dispatch(setGame(game))
+            if(gameFactory instanceof ClassicGameFactory){
+                const operationManager = new ClassicOperationManager
+                const gridTemplate = new ClassicTemplate
+                const maxTurns = 19
+                const game = gameFactory.initialize(operationManager, gridTemplate, maxTurns)
+                dispatch(setGame(game))
+            }
+
         }
         catch (error) {
             console.log(error)
