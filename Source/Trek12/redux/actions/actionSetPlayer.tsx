@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import  Player from "../../Model/Player";
 import { CURRENT_PLAYER } from '../constants';
 
