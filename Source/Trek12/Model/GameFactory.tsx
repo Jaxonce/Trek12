@@ -4,7 +4,7 @@ import OperationManager from "./OperationManager";
 
 abstract class GameFactory{
 
-    public intitialize(om: OperationManager, gt: GridTemplate, maxTurns : number): Game{
+    public initialize(om: OperationManager, gt: GridTemplate, maxTurns : number): Game{
         return new Game(gt, om, maxTurns)
     }
 
