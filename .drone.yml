@@ -9,9 +9,9 @@ steps:
       - cd Source/Trek12
       - npm install
       - npm run test
-      - ls
+      - ls ./Tests/coverage
       - sonar-scanner -X -Dsonar.projectKey=Trek12 -Dsonar.sources=. -Dsonar.host.url=$${PLUGIN_SONAR_HOST} 
-        -Dsonar.login=sqp_cfb8f45ecad5a399cb45e9fcb01cb41e3a222bdd -Dsonar.javascript.lcov.reportPaths=./test/coverage/lcov.info 
+        -Dsonar.login=sqp_cfb8f45ecad5a399cb45e9fcb01cb41e3a222bdd -Dsonar.javascript.lcov.reportPaths=./Tests/coverage/lcov.info 
         -Dsonar.exclusions=**/lcov-report/**
 
     secrets: [ SECRET_SONAR_LOGIN ]
