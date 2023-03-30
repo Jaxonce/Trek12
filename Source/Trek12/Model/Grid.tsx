@@ -74,7 +74,7 @@ class Grid {
     var zoneCells: Cell[] = [] //  cellules de la zone
     var celltypes : Celltype[] = []
 
-    // si la liste donnée en param contient pas des id identiques, ça dégage parce que c'est pas une zone
+    // si la liste donnée en param contient des id identiques, ça dégage parce que c'est pas une zone
     if (l.every((id, index, array) => id == array[0])) {
       return -1
     }
