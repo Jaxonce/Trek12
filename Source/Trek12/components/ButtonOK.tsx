@@ -9,7 +9,7 @@ type ButtonOkProps = {
 export default function ButtonOK (props: ButtonOkProps) {
   return (
     <View>
-        <Pressable style={({ pressed }) => [
+        <Pressable onPress={props.onPress} style={({ pressed }) => [
             {
               opacity: pressed
                 ? 0.8

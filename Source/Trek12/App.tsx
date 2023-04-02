@@ -5,6 +5,8 @@ import GameScreen from './screens/GameScreen';
 import * as ScreenOrientation from 'expo-screen-orientation';
 import { useFonts } from 'expo-font';
 import StartNavigation from './components/StartNavigation';
+import { Provider } from 'react-redux';
+import store from './redux/store';
 
 
 //Changer le landscape en right avant de commit
@@ -18,6 +20,8 @@ export default function App() {
     return null;
   }
   return (
-    <StartNavigation></StartNavigation>
+    <Provider store={store}>
+      <StartNavigation></StartNavigation>
+    </Provider>
   );
 }

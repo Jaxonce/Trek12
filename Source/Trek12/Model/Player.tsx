@@ -6,10 +6,10 @@ class Player{
     private Name: String
     private Stats: Stats
 
-    constructor(){
-        this.Id = null
-        this.Name = "DefaultName"
-        this.Stats = new Stats
+    constructor(id: number, name: string, stats: Stats){
+        this.Id = id
+        this.Name = name
+        this.Stats = stats
     }
 
     public getId(): number{

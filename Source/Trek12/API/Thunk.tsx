@@ -1,11 +1,10 @@
 import Player from "../Model/Player"
-import { setPlayer } from "../redux/actions/actionSetPlayer"
+import { setPlayersList } from "../redux/actions/actionSetPlayersList"
 import ClassicGameFactory from "../Model/ClassicGameFactory"
 import { SetGameFactory } from "../redux/actions/actionSetGameFactory";
 import { setGame } from "../redux/actions/actionSetGame";
 import ClassicOperationManager from "../Model/ClassicOperationManager";
 import ClassicTemplate from "../Model/ClassicTemplate";
-import { appReducer } from "../redux/reducers/appReducer";
 import GameFactory from "../Model/GameFactory";
 
 export const getGameFactory = () => {
@@ -41,12 +40,14 @@ export const getGame = () => {
     }
 }
 
-export const getPlayer = () => {
+export const getPlayersList = () => {
     //@ts-ignore
     return async dispatch => {
         try {
-            var player = new Player
-            dispatch(setPlayer(player))
+            const playersPromise = await fetch('https://codefirst.iut.uca.fr/containers/Trek_Prod-trek12api/AllPlayers')
+            const playersListJson = await playersPromise.json()
+            const playersList: Player[] = playersListJson.map(elt => new Player(elt["id"], elt["pseudo"], elt["stats"]))
+            dispatch(setPlayersList(playersList))
         }
         catch (error) {
             console.log(error)

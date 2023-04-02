@@ -1,9 +1,9 @@
 import  Player from "../../Model/Player";
 import { CURRENT_PLAYER } from '../constants';
 
-export const setPlayer = (player: Player) => {
+export const setPlayersList = (playersList: Player []) => {
   return {
     type: CURRENT_PLAYER,
-    payload: player,
+    payload: playersList,
   };
 }

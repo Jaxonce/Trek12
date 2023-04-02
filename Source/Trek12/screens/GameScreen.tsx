@@ -3,11 +3,13 @@ import { Text, View, StyleSheet, Dimensions, ImageBackground, TouchableOpacity }
 import PauseButton from '../components/PauseButton';
 import DiceButton from '../components/DiceButton';
 import { StatusBar } from 'expo-status-bar';
+//import { useSelector, useDispatch } from 'react-redux';
 import EndOperationGrid from '../components/EndOperationGrid'
 import HelpCalculationButton from '../components/HelpCalculationButton'
 
 
 export default function GameScreen({navigation}) {
+
     const diceValue = 12
     const [cases, setCases] = useState(Array(19).fill('X'));
     const containers = [  ["-31%", "18.3%"],
