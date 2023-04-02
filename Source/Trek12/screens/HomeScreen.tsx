@@ -12,6 +12,14 @@ export default function HomeScreen({ navigation }) {
 
     const [scrollEnabled, setScrollEnabled] = useState(false);
 
+    useEffect(() => {
+        const loadPlayer = async () => {
+            //@ts-ignore
+            await dispatch(getPlayer(player))
+        }
+        loadPlayer()
+    }, [dispatch])
+
     return (
         <ImageBackground source={require('../assets/bg.png')} resizeMode="cover" style={styles.image}>
             <ScrollView
