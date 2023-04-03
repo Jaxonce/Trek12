@@ -1,5 +1,6 @@
 import Grid from "./Grid"
 import GridTemplate from "./GridTemplate"
+import ICalculator from "./ICalculator"
 import OperationManager from "./OperationManager"
 
 class GamePlayer{
@@ -8,10 +9,10 @@ class GamePlayer{
     private Grid: Grid 
     private Operations: OperationManager 
 
-    constructor(operations: OperationManager, gt: GridTemplate){
+    constructor(operations: OperationManager, gt: GridTemplate, calc: ICalculator){
         this.Score = 0
         this.Penalties = 0
-        this.Grid = new Grid(gt)
+        this.Grid = new Grid(gt, calc)
         this.Operations = operations
     }
 

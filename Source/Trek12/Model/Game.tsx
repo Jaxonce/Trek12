@@ -1,5 +1,6 @@
 import GamePlayer from "./GamePlayer";
 import GridTemplate from "./GridTemplate";
+import ICalculator from "./ICalculator";
 import OperationManager from "./OperationManager";
 import Player from "./Player";
 
@@ -10,15 +11,17 @@ class Game{
     private ActualTurn: number
     private gridTemplate: GridTemplate
     private operationManager: OperationManager
+    private Calculator: ICalculator
     private maxTurns: number
 
-    constructor(gt: GridTemplate, om: OperationManager, maxTurns: number){
+    constructor(gt: GridTemplate, om: OperationManager, maxTurns: number, calc: ICalculator){
         this.DiceHistory = new Array()
         this.setActualTurn(1)
         this.Players = new Map<Player,GamePlayer>()
         this.gridTemplate = gt
         this.operationManager = om
         this.maxTurns = maxTurns
+        this.Calculator = calc
     }
 
     public addPlayer(p: Player): boolean{
@@ -26,7 +29,7 @@ class Game{
             return false 
         }
         
-        this.Players.set(p, new GamePlayer(this.getOperationManager(), this.getGridTemplate()))
+        this.Players.set(p, new GamePlayer(this.getOperationManager(), this.getGridTemplate(), this.getCalculator()))
         return true
     }
 
@@ -97,6 +100,10 @@ class Game{
 
     public getMaxTurns(): number{
         return this.maxTurns
+    }
+
+    public getCalculator(): ICalculator{
+        return this.Calculator
     }
 }
 
