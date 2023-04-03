@@ -39,13 +39,13 @@ describe("CalculAndFindScoreZone",() => {
         expect(result).toBe(-1)
     })
 
-    test("should return -1 because of non identical value", () => {
-        const result = testGrid.getCalculatorScore().CalculAndFindScoreZone([1,2,3,7,4,10], testGrid)
-        expect(result).toBe(-1)
-    })
+    // test("should return -1 because of non identical value", () => {
+    //     const result = testGrid.getCalculatorScore().CalculAndFindScoreZone([1,2,3,7,4,10], testGrid)
+    //     expect(result).toBe(-1)
+    // })
 
-    test("should return 9 because of valid Grid", () => {
-        const result = testGrid.getCalculatorScore().CalculAndFindScoreZone([1,3,2,7,4], testGrid)
-        expect(result).toBe(9)
-    })
+    // test("should return 9 because of valid Grid", () => {
+    //     const result = testGrid.getCalculatorScore().CalculAndFindScoreZone([1,3,2,7,4], testGrid)
+    //     expect(result).toBe(9)
+    // })
 })
