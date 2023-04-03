@@ -18,6 +18,6 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "jest --coverage=true --coverageDirectory=./Test/coverage"
+    "test": "jest --coverage=true --coverageDirectory=./Tests/coverage"
   }
 }
