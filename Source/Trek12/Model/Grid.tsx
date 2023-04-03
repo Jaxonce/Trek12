@@ -10,7 +10,7 @@ class Grid {
   private Template: GridTemplate
   private CalculatorScore: ICalculator
 
-  constructor(gt: GridTemplate, calc: ICalculator) {
+  constructor(gt: GridTemplate, calc: ICalculator = null) {
     this.Cells = []
     this.Template = gt
     this.CalculatorScore = calc

@@ -5,20 +5,18 @@ import GridTemplate from "./GridTemplate";
 import Celltype from "./Celltype";
 
 class CalculatorClassic implements ICalculator {
-    Grid: Grid
     Template: GridTemplate
 
-    constructor(grid: Grid, template: GridTemplate) {
-        this.Grid = grid
+    constructor(template: GridTemplate) {
         this.Template = template
     }
-    public CalculAndFindScoreChaine(listedid: Array<number>): number { //1ere liste : id des cellules de la zone, 2eme liste : id des cellules de la chaine
+    public CalculAndFindScoreChaine(listedid: Array<number>, grid: Grid): number { //1ere liste : id des cellules de la zone, 2eme liste : id des cellules de la chaine
         const cells = [];
         const template = this.Template.getGraph();
         const valueChaineTrie = [];
         for (const cell of listedid) {
-            valueChaineTrie.push(this.Grid.getCellValue(cell));
-            cells.push(this.Grid.findCellById(cell));
+            valueChaineTrie.push(grid.getCellValue(cell));
+            cells.push(grid.findCellById(cell));
         }
         valueChaineTrie.sort();
         for (let i = 1; i < valueChaineTrie.length; i++) {
@@ -40,7 +38,7 @@ class CalculatorClassic implements ICalculator {
         }
         return Math.max(...valueChaineTrie) + (valueChaineTrie.length - 1);
     }
-    public CalculAndFindScoreZone(l: Array<number>): number {
+    public CalculAndFindScoreZone(l: Array<number>, grid: Grid): number {
         var listeVisited = [] // liste des cellules visitée
         var listeCellulesZone = [] // liste des cellules de la zone actuelle
         var zoneCells: Cell[] = [] //  cellules de la zone
@@ -57,7 +55,7 @@ class CalculatorClassic implements ICalculator {
             if (!listeVisited.includes(cellId)) {       // si la cellule n'est pas déjà visitée
 
                 listeVisited.push(cellId) // la marque comme visitée
-                for (const adj of this.Grid.getAdjacentCells(cellId)) { // pour chacune de ses cellules adjacentes
+                for (const adj of grid.getAdjacentCells(cellId)) { // pour chacune de ses cellules adjacentes
 
                     if ((!listeCellulesZone.includes(adj)) && (l.includes(adj))) { // si elle est pas dans listeZone mais qu'elle est dans la liste donnée en param 
 
@@ -84,7 +82,7 @@ class CalculatorClassic implements ICalculator {
 
             //ajoute dans la liste des cellules de la zone ( pas la liste de leurs ids) les cellules
             for (const idCell of listeCellulesZone) {
-                zoneCells.push(this.Grid.findCellById(idCell))
+                zoneCells.push(grid.findCellById(idCell))
             }
 
             // récupère le type de chaque cellule de la zone
