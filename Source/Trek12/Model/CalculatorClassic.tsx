@@ -106,6 +106,9 @@ class CalculatorClassic implements ICalculator {
                 }
             }
 
+            console.log("valeur zone: "+zoneCells[0].getValue())
+            console.log("longueur zone: "+zoneCells.length)
+
             //return le score
             return zoneCells[0].getValue() + zoneCells.length - 1
         }

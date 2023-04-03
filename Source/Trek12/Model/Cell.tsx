@@ -6,9 +6,9 @@ class Cell{
     private value: number
     private type: Celltype
 
-    constructor(id: number, type: Celltype = Celltype.UNKNOWN){
+    constructor(id: number, value: number = 0, type: Celltype = Celltype.UNKNOWN){
         this.id = id
-        this.value = 0
+        this.value = value
         this.type = type
     }
 
